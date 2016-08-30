@@ -1,0 +1,152 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+8}\label{analysis-i---homework---week-8}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 8}
+
+    \textbf{1.} Let $f: X\to \mathbb{R}$ be a function and define
+$\operatorname{supp}(f)$, the support of $f$, as the closure of subset
+of $X$ where $f$ is non-zero, i.e.;
+\[ \operatorname{supp}(f) := \operatorname{cl}(\{x\in X \mid f(x) \neq 0\}).\]
+
+Define
+\[ \mathcal{C}_0(\mathbb{R},\mathbb{R}) := \{f:\mathbb{R} \to \mathbb{R} \mid \operatorname{supp}(f) \text{ is compact}\} \cap \mathcal{C}(\mathbb{R},\mathbb{R}).\]
+
+Prove that $\mathcal{C}_0(\mathbb{R},\mathbb{R})$ is algebra.
+
+\textbf{Proof.} It is enough to check that if
+$f,g \in \mathcal{C}_0(\mathbb{R},\mathbb{R})$, $\alpha \in \mathbb{R}$
+then $f+g$, $fg$, $\alpha f$ in $\mathcal{C}(\mathbb{R},\mathbb{R})$. We
+will prove that this is true for $f + g$, the others are similar. If
+$f(x) = g(x) = 0$, then $(f+g)(x) = 0$. So
+\[(\mathbb{R} \backslash \operatorname{supp}(f))\cap (\mathbb{R} \backslash \operatorname{supp}(g)) \subset \{x \in \mathbb{R} \mid (f+g)(x) = 0\}.\]
+
+In other words, we have
+\[\{x \in \mathbb{R} \mid (f+g)(x) \ne 0\} \subset \operatorname{supp}(f) \cup \operatorname{supp}(g).\]
+
+By $\operatorname{supp}(f) \cup \operatorname{supp}(g)$ is closed, we
+have
+\[\operatorname{supp}(f+g) = \operatorname{cl}(\{x \in \mathbb{R} \mid (f+g)(x) \ne 0\}) \subset  \operatorname{supp}(f) \cup \operatorname{supp}(g),\]
+which implies that $f+g \in \mathcal{C}_0 (\mathbb{R},\mathbb{R})$.
+$\Box$
+
+    \textbf{2.} Let $f$ be a continuous function from $[0,1]$ to
+$\mathbb{R}$.
+\[\int_0^1 f(x)x^n\,dx = 0, \quad \text{for all } n \in \mathbb{N} \cup \{0\},\]
+then $f(x) = 0$ for all $x\in [0,1]$.
+
+\textbf{Proof.} By assumption, we have
+\[\tag{*} \int_0^1 f(x) p(x) \,dx = 0,\] for $p$ is any polynomial in
+$\mathbb{R}$. The Stone-Weierstrass theorem says that the set of all
+polynomial is dense in $\mathbb{C}([0,1],\mathbb{R})$. So there is a
+sequence of polynomial $\{p_n\}$ converges uniformly to $f$ in $[0,1]$.
+By $f$ is bounded in $[0,1]$, we have $fp_n$ converges uniformly to
+$f^2$ in $[0,1]$. So, by $(*)$, \[\int_0^1 f^2(x) \,dx = 0,\] which
+implies that $f(x) = 0$ for all $x\in [0,1]$. $\Box$
+
+    \textbf{3.} Let $f$ be a continuous function form $[0,1]$ to
+$\mathbb{R}$. Prove that if
+\[\int_0^1 f(x)e^{nx}\,dx = 0, \quad \text{for all } n \in \mathbb{N} \cup \{0\},\]
+then $f(x) = 0$ for all $x\in [0,1]$.
+
+\textbf{Proof.} Similar to Exercise 2, we just need to prove that the
+set $\mathcal{B}$ of finite linear combinations of $e^{nx}$ where
+$n \in \mathbb{N} \cup \{0\}$ is dense in
+$\mathcal{C}([0,1], \mathbb{R})$. By Stone-Weierstrass theorem (Theorem
+5.12), it is enough to show that $\mathcal{B}$ is an algebra containing
+$\chi_{[0,1]}$ function and separating points. For $f$ and $g$ are two
+finite linear combinations of $e^{nx}$ ($n\in \mathbb{N}\cup\{0\}$), it
+is clear that $f+g$, $fg$, $\alpha f$ are also finite linear
+combinations of $e^{nx}$ ($n\in \mathbb{N}\cup\{0\}$). So $\mathcal{B}$
+is an algebra. Let $n = 0$, we get $e^{0x} = 1 = \chi_{[0,1]}(x)$, so
+$\chi_{[0,1]} \in \mathcal{B}$. For any $x\ne y \in \mathbb{R}$, we have
+$e^x \ne e^y$ so $\mathcal{B}$ separates points. We conclude. $\Box$
+
+    \textbf{4.} Prove that $f(x) = 1/x$ cannot be approximated uniformly by
+polynomials on $(0,1)$, i.e., there is no sequence of polynomial $f_n$
+such that $f_n \to f$ uniformly on $(0,1)$.
+
+\textbf{Proof.} Suppose on the contrary that there is a sequence of
+polynomial $\{f_n\}$ such that $f_n \to f$ uniformly on $(0,1)$. Let
+$\epsilon = 1$, there exists $n$ such that $|f_n(x) - f(x)| < 1$, hence
+$|f(x)| < |f_n(x)| + 1$, for all $x\in (0,1)$. By $f_n$ is bounded on
+$[0,1]$, we have $f$ is bounded on $(0,1)$, which is a contradiction
+because $\lim_{x\to 0} f(x) = \infty$. $\Box$
+
+    \textbf{5.} Let $f:\mathbb{R}^2 \to \mathbb{R}^2$,
+$f(x,y) := (x^2,y^2)$. Prove that
+\[Df(x,y) = \begin{pmatrix}2x & 0\\0 & 2y\end{pmatrix}\] directly form
+the definition in the text book.
+
+\textbf{Proof.} Put $f = (f_1,f_2)$ where $f_1(x,y) = x^2$,
+$f_2(x,y) = y^2$. We have
+\[Df(x,y) = \begin{pmatrix} \frac{\partial f_1}{\partial x}(x,y) & \frac{\partial f_1}{\partial y}(x,y) \\
+\frac{\partial f_2}{\partial x}(x,y) & \frac{\partial f_2}{\partial y}(x,y) \end{pmatrix} = \begin{pmatrix}2x & 0\\0 & 2y\end{pmatrix} .\Box\]
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

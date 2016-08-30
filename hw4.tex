@@ -1,0 +1,384 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+4}\label{analysis-i---homework---week-4}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 4}
+
+    \textbf{1.} Prove the following ``glueing lemma'': Let
+$f:[a,b]\to \mathbb{R}^m$ and $g:[b,c]\to \mathbb{R}^m$ be continuous.
+Define $h:[a,c]\to\mathbb{R}^m$ by $h=f$ on $[a,b)$ and $h=g$ on
+$[b,c]$. If $f(b) = g(b)$, then $h$ is continuous.
+
+\textbf{Proof.} Let $x \in [a,c]$ and a sequence $\{x_n\}\subset [a,c]$
+converging to $x$. If $x\in [a,b)$, then there is $\delta >0$ such that
+$D(x,\delta)\cap [a,c] \subset [a,b)$. Moreover, there is $N > 0$ such
+that $x_n \in D(x,\delta)$ for all $n\ge N$. Because $\{x_n\}_{n\ge N}$
+is a sequence in $[a,b)$ and converges to $x\in [a,b)$, we have
+$\{f(x_n)\}_{n\ge N}$ converges to $f(x)$. By $h(x_n) = f(x_n)$ for all
+$n\ge N$, we have $\{h(x_n)\}_{n\ge N}$ converges to $h(x)=f(x)$. This
+means that $h(x_n)$ converges to $h(x)$ as $n \to \infty$.
+
+Similarly, if $x\in (b,c]$, we have $h(x_n)$ converges to $h(x)$ as
+$n\to \infty$. The remaining case is when $x = b$. In this case,
+$h(x) = f(x) = g(x)$. Let $\epsilon >0$. By the continuity of $f$ at
+$b$, there is $\delta_1 > 0$ such that $|f(y)-f(x)|\le \epsilon$ if
+$y\in D(x,\delta_1)\cap [a,b]$. Similarly, there is $\delta_2 > 0$ such
+that $|g(y)-g(x)|\le \epsilon$ if $y\in D(x,\delta_2)\cap [b,c]$. Let
+$\delta = \min\{\delta_1,\delta_2\}$. If $y\in D(x,\delta)\cap [a,b)$,
+then $h(y) = f(y)$ and $|h(y)-h(x)| = |f(y)-f(x)| \le \epsilon$. If
+$y\in D(x,\delta)\cap [b,c]$, then $h(y) = g(y)$ and
+$|h(y)-h(x)| = |g(y)-g(x)| \le \epsilon$. So if
+$y\in D(x,\delta)\cap [a,c]$, then $|h(y)-h(x)| \le \epsilon$. The
+existence of $\delta$ is true for all $\epsilon > 0$, so $h$ is
+continuous at $x=b$. We conclude. $\Box$
+
+\emph{Note.} This proof gives applications of both $\epsilon-\delta$
+argument and ``converging sequence'' argument when proving a function is
+continuous. Just use the one we feel more comfortable in each situation.
+
+    \textbf{2.} $(a)$ For $f:(a,b)\to \mathbb{R}$, show that if $f$ is
+continuous then its graph $\Gamma$ is path-connected and vice versa.
+
+$(b)$ For $f:A\to \mathbb{R}^m$, $A\subset \mathbb{R}^n$, show that for
+$n\ge 2$, connectedness of the graph does not imply continuity. {[}Hint:
+For $f:\mathbb{R}^2 \to \mathbb{R}$, cut a slit in the graph.{]}
+
+$(c)$ Discuss $(b)$ for $m=n=1$.
+
+\textbf{Proof.} $(a)$ For the $(\Rightarrow)$ side, let $(x,f(x))$ and
+$(y,f(y))$ be two distinct points in $\Gamma$. The mapping $\varphi$ is
+defined from $[0,1]$ to $\Gamma$ by
+$\varphi(t) = ((1-t)x + ty,f((1-t)x+ty))$. By the continuity of $f$, we
+have $\varphi$ is continuous on $[0,1]$. Moreover,
+$\varphi(0) = (x,f(x))$ and $\varphi(1) = (y,f(y))$. So $(x,f(x))$ is
+path-connected to $(y,f(y))$ in $\Gamma$. We conclude that $\Gamma$ is
+path-connected.
+
+For the $(\Leftarrow)$ side, suppose $\Gamma$ is path-connected. Let
+$x\in (a,b)$, we will show that $f$ is continuous at $x$. Indeed, let
+$y, z \in (a,b)$ such that $y < x < z$ and let $\pi$ be the project of
+$\Gamma$ which is defined by $\pi(x,y) = x$. It is clear that $\pi$ is
+continuous. Because $\Gamma$ is path-connected, there exists a
+continuous function $\varphi:[0,1]\to \Gamma$ such that
+$\varphi(0) = (y,f(y))$ and $\varphi(1) = (z,f(z))$. We have
+$\pi\circ \varphi$ is continuous, so $\pi\circ \varphi([0,1])$ must be
+connected, which implies that $[y,z]\subset \pi\circ \varphi([0,1])$,
+hence $x$ is a interior point of $\pi\circ \varphi([0,1])$.
+
+We have $\varphi([0,1])$ is a compact set. Now we consider $\pi$ is
+restricted to $\varphi([0,1])$, then $\pi$ is continuous, $1-1$, and
+onto $\pi(\varphi([0,1]))$. Apply Exercise 5.a, we get $\pi^{-1}$ is a
+continuous function. Note that $\pi^{-1}(w) = (w,f(w))$. Because $x$ is
+a interior point of $\pi\circ \varphi([0,1])$, and $\pi^{-1}$ is
+continuous on $\pi\circ \varphi([0,1])$, $f$ must be continuous at $x$.
+We conclude.
+
+$(b)$ Let $g:[0,\infty)\times \{0\} \to \mathbb{R}$ be defined by
+$g(x,0) = \sin(1/x)$ if $x > 0$ and $g(0,0) = 0$. By $(c)$ and the
+continuity of the injection $(x,f(x)) \mapsto (x,0,g(x,0))$ from the
+graph of $f$ in $(c)$ to the graph of $g$, the graph of $g$ must be
+connected. But $g$ is discontinuous at $(0,0)$ by a similar reason as
+$f$ in $(c)$.
+
+$(c)$ Let $f:[0,\infty)\to \mathbb{R}$ be defined by $f(x) = \sin(1/x)$
+if $x > 0$ and $f(0) = 0$. Because $f(1/\pi n) = 0$ for all $n$ and
+$(1/\pi n, 0) \to (0,0)$ as $n\to\infty$, we have $(0,0)$ is in the
+closure of $\{(x,f(x))\mid x > 0\}$. Note that the set
+$\{(x,f(x))\mid x > 0\}$ is connected is a consequence of $(a)$. So we
+have the graph of $f$ is connected. Finally, it is clear that $f$ is
+disconnected at $0$. For example, the sequence $x_n = 1/(\pi n +\pi/2)$
+converges to $0$ as $n\to \infty$ but $f(x_n) = 1$ if $n$ is even and
+$f(x_n) = 0$ if $n$ is odd. So, in this case, the connectedness of the
+graph also does not imply continuity. $\Box$
+
+\emph{Note.} In $(b)$, I don't quite understand the hint, so I use the
+result of $(c)$ as a trick.
+
+    \textbf{3.} Is the sum (product) of two Lipschitz continuous functions
+again Lipschitz continuous?
+
+\textbf{Proof.} $(sum)$ True. Let $f_1, f_2$ are two Lipschitz
+continuous functions on $A$. Then there is $L_1,L_2 \ge 0$ such that
+$\|f_1(x)-f_1(y)\|\le L_1\|x-y\|$ and $\|f_2(x)-f_2(y)\|\le L_2\|x-y\|$
+for all $x,y\in A$. We have \[\begin{aligned}
+\|(f_1+f_2)(x) - (f_1+f_2)(y)\| &= \|(f_1(x)-f_1(y)) + (f_2(x)-f_2(y))\| \\
+&\le \|f_1(x)-f_1(y)\| + \|f_2(x)-f_2(y)\|\\
+&\le (L_1+L_2)\|x-y\|.
+\end{aligned}\]
+
+So $f_1 + f_2$ is Lipschitz continuous.
+
+$(product)$ False. Let
+$f_1 \equiv f_2 \equiv f :\mathbb{R}\to \mathbb{R}$ defined by $f(x)=x$.
+It is clear that $f$ is Lipschitz continuous with the constant $L = 1$.
+We claim that the function $g:\mathbb{R}\to \mathbb{R}$ defined by
+$g(x) = x^2$ is not Lipschitz continuous. Indeed, for any $x\ne 0$, we
+have \[|g(x)-g(0)|/|x-0| = |x^2|/|x| = |x|.\]
+
+So if $g$ is Lipschitz with the constant $L\ge 0$, then $L \ge |x|$ for
+all $x\ne 0$. But this cannot be true because $L$ is finite. We
+conclude. $\Box$
+
+    \textbf{4.} $(a)$ Find a function $f:\mathbb{R}^2\to \mathbb{R}$ such
+that \[
+\lim_{x\to 0}\lim_{y\to 0} f(x,y),\qquad \lim_{y\to 0}\lim_{x\to 0} f(x,y)
+\] exists but are not equal.
+
+$(b)$ Find a function $f:\mathbb{R}^2 \to \mathbb{R}$ such that the two
+limits in $(a)$ exist and are equal, but $f$ is not continuous.
+
+$(c)$ Find a function $f:\mathbb{R}^2 \to \mathbb{R}$ which is
+continuous on every line through the origin but is not continuous.
+
+\textbf{Proof.} $(a)$ Let $f$ be defined by $f(x,y) = x/(x+y)$ with
+$(x,y)\ne (0,0)$ and $f(0,0) = 0$. Then for all $x\ne 0$, we have
+$\lim_{y\to 0} x/(x+y) = 1$. So
+\[ \lim_{x\to 0}\lim_{y\to 0} f(x,y) = 1.\]
+
+However, for all $y\ne 0$, we have $\lim_{x\to 0} x/(x+y) = 0$. So
+\[ \lim_{y\to 0}\lim_{x\to 0} f(x,y) = 0 \ne  \lim_{x\to 0}\lim_{y\to 0} f(x,y).\]
+
+$(b)$ Let $f$ be defined by $f(x,y) = xy/(x^2+y^2)$ with
+$(x,y)\ne (0,0)$ and $f(0,0) = 0$. Then for all $x\ne 0$, we have
+$\lim_{y\to 0} f(x,y) = 0$. Hence
+\[ \lim_{x\to 0}\lim_{y\to 0} f(x,y) = 0.\]
+
+Similarly, \[ \lim_{y\to 0}\lim_{x\to 0} f(x,y) = 0.\]
+
+But $f$ is not continuous at $(0,0)$ because $f(1/n,1/n) = 1/2$ for all
+$n$.
+
+$(c)$ Let $f$ be defined by $f(x,y) = xy^2/(x^2+y^4)$ with
+$(x,y)\ne (0,0)$ and $f(0,0) = 0$. Then on the line $x = 0$, we have
+$f(0,y) = 0$ for all $y$. So $f$ is continuous on the line $[x=0]$. For
+other lines through origin, the formula for each line is $[y = ax]$ for
+some $a\in \mathbb{R}$. One the line $[y=ax]$, for $x\ne 0$, we have
+$f(x,ax) = a^2x/(1+ a^4x^2)$, so we just have to worry about the
+continuity of $f$ at $(0,0)$. But $a^2x/(1+ a^4x^2) \to 0$ as $x \to 0$.
+So $f$ is truly continuous at $(0,0)$ on the line $[y=ax]$. This means
+that $f$ is continuous on every line through the origin.
+
+Finally, we claim that $f$ is discontinuous at $(0,0)$. Indeed, for
+example, we have $(1/n^2,1/n)\to (0,0)$ but $f(1/n^2,1/n) = 1/2 \to 1/2$
+as $n\to \infty$. $\Box$
+
+    \textbf{5.} $(a)$ Suppose $f$ is a continuous $1-1$ mapping of a compact
+metric space $X$ onto a metric space $Y$. Then the inverse mapping
+$f^{-1}$ is a continuous mapping of $Y$ onto $X$.
+
+$(b)$ Give a counterexample that $f$ is a continuous $1-1$ mapping of a
+metric space $X$ onto a metric space $Y$ but the inverse mapping
+$f^{-1}$ is a discontinuous mapping of $Y$ onto $X$.
+
+\textbf{Proof.} $(a)$ Let $\{y_n\}$ be a sequence in $Y$ which converges
+to a point $y\in Y$. Put $x=f^{-1}(y)$ and $x_n = f^{-1}(y_n)$ for all
+$n$. To show $f^{-1}$ is continuous, we just need to prove that
+$x_n \to x$ as $n\to \infty$. Suppose on the contrary that $\{x_n\}$
+does not converge to $x$. This means that there exists $\epsilon > 0$
+such that: ``for all $n$, there exists $m > n$ such that
+$d(x_m,x) > \epsilon$''. Then there exists a subsequence $\{x_{n_k}\}$
+of $\{x_n\}$ such that $d(x_{n_k},x) > \epsilon$ for all $k$. The
+compactness of $X$ gives us a subsequence $\{x_{n_{k_t}}\}$ of
+$\{x_{n_k}\}$ which converges to $z\in X$. By
+$d(x_{n_{k_t}},x) > \epsilon$ for all $t$, we have
+$d(z,x) \ge \epsilon$, hence $z\ne x$. Now, the continuity of $f$
+implies that $y_{n_{k_t}}= f(x_{n_{k_t}})$ converges to $f(z)$ as
+$t\to \infty$, hence $f(z) = y = f(x)$. This contradicts with $z\ne x$
+(because $f$ is $1-1$).
+
+$(b)$ Let $X = [0,1) \cup [2,3]$, $f(x) = x$ on $[0,1)$, and
+$f(x) = x-1$ on $[2,3]$. Clear that $f$ is continuous on $[0,1)$ and
+$[2,3]$, hence continuous on $X$. Let $Y = f(X) = [0,2]$, we have $f$ is
+a $1-1$ mapping from $X$ onto $Y$. The inverse mapping $f^{-1}$ is
+defined by $f^{-1}(y) = y$ for $y \in [0,1)$ and $f^{-1}(y) = y+1$ for
+$y\in [1,2]$. So $f^{-1}$ is not continuous at $1$. We get a
+counterexample. $\Box$
+
+    \textbf{6.} Let $f:(0,1)\to \mathbb{R}$ be a monotone increasing
+function. Define $D:=\{x\in (0,1)\mid f\text{ is discontinuous at }x\}$.
+Prove that $D$ is at most countable.
+
+\textbf{Proof.} Suppose that $f$ is discontinous at $x$. Because $f$ is
+monotone increasing, the limit of $f(y)$ as $y \to x$ from below exists.
+We denote this limit by $a_x$. Similarly, we denote $b_x = \lim f(z)$ as
+$z\to x$ from above. Because $f$ is discontinuous at $x$, $a_x < b_x$
+(if not, $a_x = b_x$, hence $a_x=b_x=f(x)$, hence $f$ is continuous at
+$x$). There always exists a rational number in $(a_x,b_x)$. By Axiom of
+Choice, there exists a function $q$ on $D$ such that
+$q(x)\in \mathbb{Q}$ and $q(x) \in (a_x,b_x)$. For $x,y\in D$ and
+$x < y$, we have $q(x) < b(x) \le a(y) < q(y)$. So $q$ is strictly
+increasing. In particular, $q$ is an injective function from $D$ to
+$\mathbb{Q}$. Hence $D$ is at most countable. $\Box$
+
+    \textbf{7.} Prove that every convex function is continuous.
+
+\textbf{Proof.} Let $f$ is a convex function in $(a,b)$. Let
+$x\in (a,b)$. It is enough to show that $f$ is right continuous at $x$
+(the left continuity is similar). Let $y, z \in (a,b)$ such that
+$z < x < y$ and a sequence $\{x_n\}\subset (x,y)$ which converges to
+$x$. Let $\lambda_n,\alpha_n\in (0,1)$ be such that
+$x_n = \lambda_n x + (1-\lambda_n)y$ and
+$x = \alpha_n z + (1-\alpha_n)x_n$. We have $\lambda_n = (y-x_n)/(y-x)$,
+hence converges to $1$ as $n\to \infty$; and
+$\alpha_n = (x_n-x)/(x_n-z)$, hence converges to $0$ as $n\to \infty$.
+By the convexity of $f$, we have \[
+f(x_n) \le \lambda_n f(x) + (1-\lambda_n)f(y)
+\] and \[
+f(x) \le \alpha_n f(z) + (1-\alpha_n) f(x_n).
+\]
+
+The second inequality is equivalent to \[
+\frac{f(x) - \alpha_n f(z)}{1-\alpha_n} \le f(x_n).
+\]
+
+So we have \[
+\frac{f(x) - \alpha_n f(z)}{1-\alpha_n} \le f(x_n) \le \lambda_n f(x) + (1-\lambda_n)f(y).
+\]
+
+Both the left sequence and the right sequence converges to $f(x)$ as
+$n \to\infty$. So $f(x_n) \to f(x)$ as $n\to \infty$. We conclude.
+$\Box$
+
+    \textbf{8.} Let $f:\mathbb{R}\to \mathbb{R}$.
+
+$(a)$ Give an example that $f$ is discontinuous at every point in
+$\mathbb{R}$.
+
+$(b)$ Give an example that $f$ is continuous at every irrational point,
+and that $f$ is discontinuous at every rational point.
+
+\textbf{Proof.} $(a)$ Consider the function $f \equiv \chi_{\mathbb{Q}}$
+with value $1$ on $\mathbb{Q}$ and $0$ on the remaining. Let
+$x\in \mathbb{R}$. If $x\in \mathbb{Q}$, we consider the sequence
+$\{x_n\}$ of irrational numbers which converging to $x$. Then by
+$f(x_n) = 0$ for all $n$ and $f(x) = 1$, we cannot have $f$ continous at
+$x$. Similarly, we also get $f$ is not continous at $x$ when
+$x\notin \mathbb{Q}$. We conclude.
+
+$(b)$ Let $f$ be the non-negative function defined by $f(x) = 0$ if $x$
+is irrational and $f(x) = 1/q_x$ if $x$ is rational, here $q_x$ is the
+least positive integer such that $q_xx \in \mathbb{Z}$ (in other word,
+$q_x$ is the denominator of $x$ in its lowest terms $p/q$, $q>0$). Note
+that $f(0) = 1$. First, we claim that $f$ is discontinuous at every
+rational point. Let $x\in \mathbb{Q}$, then $f(x) \ne 0$. But we can
+construct a sequence of irrational point $\{x_n\}$ which converges to
+$x$. By $f(x_n) = 0$ for all $n$, we conclude that $f$ is not continuous
+at $x$.
+
+Now, we prove that $f$ is continuous at every irrational point. Let
+$x\notin \mathbb{Q}$ and $\epsilon > 0$. Pick $N\in \mathbb{N}$ such
+that $1/N < \epsilon$. By $f(x) = 0$, to show that $f$ is continuous at
+$x$, it is enough to give $\delta > 0$ such that $f(y) < 1/N$ for all
+$y \in (x-\delta, x+\delta)$. We claim that for each $i\in \mathbb{N}$,
+the number of rational number $z\in (x-1,x+1)$ with $q_z = i$ is finite.
+Indeed, by $q_zz \in \mathbb{Z}$, we have $iz \in \mathbb{Z}$, but the
+number of integers in $(i(x-1),i(x+1))$ is finite. So the number of such
+$z$ must be finite. We denote the set of these $z$ by $A_i$, for each
+$i$.
+
+Let $A$ be the union of $A_i$ with $1\le i\le N$. Because $A$ is finite,
+there is $\delta > 0$ such that $|x-z| > \delta$ for all $z\in A$. This
+is the $\delta$ we want to find. Indeed, for
+$y\in (x-\delta, x+\delta)$, $y \notin A$ by the way we choose $\delta$.
+If $y\notin \mathbb{Q}$, clearly $f(y) = 0 < 1/N$. If $y\in \mathbb{Q}$,
+by $y\notin A$, we have $q_y  > N$, hence $f(y) = 1/q_y < 1/N$, as
+required. $\Box$
+
+\emph{Note.} The function in $(b)$ is called Thomae's function (or
+popcorn function, or raindrop function, \ldots{})
+
+    \textbf{9.} Show that ($A$ is connected and locally path-connected)
+$\Leftrightarrow$ ($A$ is path-connected).
+
+\textbf{Proof.} For the $(\Rightarrow)$ side, let $x\in A$ and let $V$
+be all points in $A$ which can be connected to $x$ by a path in $A$.
+Because $x\in V$, $V\ne \varnothing$. For a point $y\in V$, by
+assumption, there exists a neighborhood $U_y$ such that $A\cap U_y$ is
+path-connected. Hence every point in $A \cap U_y$ can be connected to
+$y$ by a path in $A$ (indeed, in $A\cap U_y$). So every point in
+$A\cap U_y$ can be connected to $x$ by a path in $A$. So
+$(A\cap U_y) \subset V$, which implies that $V$ is open relative to $A$.
+
+Now, let $y$ in the closure of $V$ in $A$. As above, there eixsts a
+neighborhood $U_y$ such that $A\cap U_y$ is path-connected. Because
+$A\cap U_y$ is open relative to $A$, we have
+$(A\cap U_y)\cap  V \neq \varnothing$. Let $z\in (A\cap U_y)\cap  V$,
+then $z$ can be connected by a path to $x$ and a path to $y$. So $y$ can
+be connected to $x$ by a path in $A$, which means $y \in V$. Hence $V$
+is closed relative to $A$.
+
+In conclusion, $V$ and $A\backslash V$ are disjoint and open relative to
+$A$. By the connectedness of $A$, $A\backslash V$ must be $\varnothing$.
+Hence $V = A$, which means $A$ is path-connected.
+
+For the $(\Leftarrow)$ side, just let $U$ be the universal set which we
+are working with, we get $A\cap U$ ($=A$) is path-connected. Hence $A$
+is locally path-connected. By Theorem 3.3, the path-connectedness of $A$
+implies it connected. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

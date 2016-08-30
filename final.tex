@@ -1,0 +1,163 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \textbf{1.} \textbf{(10 points)} Let $f_n: [0,1] \to \mathbb{R}$ be a
+sequence of equicontinuous functions such that $f_n(x) \to f(x)$ for
+every $x\in [0,1]$. Prove that $f_n$ converges to $f$ uniformly.
+
+    \textbf{Proof.} Fix $\epsilon > 0$. The equicontinuity implies that
+there exists $\delta > 0$ such that for every $n$, for every
+$x,y\in [0,1]$ with $|x-y|<\delta$, we have \textbf{(1 point)}
+\[|f_n (x) - f_n(y)| < \epsilon /4.\]
+
+Cover $[0,1]$ by finite balls $B(x_1,\delta),\ldots,B(x_n,\delta)$ (by
+using the compactness of $[0,1]$, or just dividing $[0,1]$ into
+subintervals with length less than $\delta$). For each $i$
+($1\le i \le n$), by $f_n(x_i) \to f(x_i)$, there exists $N_i$ such that
+for every $n>N_i$, we have \textbf{(3 points)}
+\[|f_n(x_i) - f(x_i)| < \epsilon / 4.\]
+
+Put $N = \max\{N_1,\ldots,N_n\}$ and let $m,n > N$. For each
+$x \in [0,1]$, then there exists $i$ ($1\le i \le n$) such that
+$x \in B(x_i,\delta)$, hence \textbf{(3 points)} \[\begin{aligned}
+|f_n(x) - f_m(x)| &\le |f_n(x) - f_n(x_i)| + |f_n(x_i) - f(x_i)| + |f(x_i) - f_m(x_i)| + |f_m(x_i) - f_m(x)| \\
+& <  \epsilon /4 + \epsilon /4 + \epsilon /4 + \epsilon/4 = \epsilon.
+\end{aligned}\]
+
+This is true for all $x\in [0,1]$, so $\|f_n - f_m\| < \epsilon$ if
+$m,n > N$. So $\{f_n\}$ is a Cauchy sequence in $C([0,1],\mathbb{R})$.
+Hence it converges in norm (or uniformly) to a function
+$g \in C([0,1],\mathbb{R})$. By the uniform convergence implies
+pointwise convergence, we have $f = g$ on $[0,1]$, hence $\{f_n\}$
+converges to $f$ uniformly. \textbf{(3 points)} $\Box$
+
+    \textbf{2.} \textbf{(10 points)} If $f$ is continuous on $[0,1]$ and if
+\[\int_0^1 f(x) x^n\,dx = 0, \quad n = 0,1,2,3,\ldots,\] then prove that
+$f(x) = 0$ on $[0,1]$.
+
+    \textbf{Proof.} By assumption, we have
+\[\tag{*} \int_0^1 f(x) p(x) \,dx = 0,\] for $p$ is any polynomial in
+$\mathbb{R}[x]$. \textbf{(3 points)}
+
+The Stone-Weierstrass theorem says that the set of all polynomial is
+dense in $C([0,1],\mathbb{R})$. So there is a sequence of polynomial
+$\{p_n\}$ converges uniformly to $f$ in $[0,1]$. By $f$ is bounded in
+$[0,1]$, we have $fp_n$ converges uniformly to $f^2$ in $[0,1]$.
+\textbf{(3 points)}
+
+So, in $(*)$, replace $p$ by $p_n$ and let $n \to \infty$, we have
+\textbf{(3 points)} \[\int_0^1 f^2(x) \,dx = 0.\]
+
+By Problem 10.ii, this implies that $f(x) = 0$ for all $x\in [0,1]$.
+\textbf{(1 point)} $\Box$
+
+    \textbf{5.} \textbf{(15 points)}
+
+$(i)$ Compute index of the function
+$x^2 + y^2 − 7x − 8y + xy + 16 + (x − 2)^3$ at its critical point
+$x = 2$, $y = 3$.
+
+$(ii)$ Discuss the nature of the function near this point.
+
+    \textbf{Proof.} $(i)$ Put
+$f(x,y) = x^2 + y^2 − 7x − 8y + xy + 16 + (x − 2)^3$. We have
+\[\frac{\partial f}{\partial x} = 2x - 7 + y + 3(x-2)^2,\quad \frac{\partial f}{\partial y} = 2y - 8 + x,\]
+\[\frac{\partial^2 f}{\partial x^2} = 2 + 6(x-2),\quad \frac{\partial^2 f}{\partial x\partial y} =  \frac{\partial^2 f}{\partial y\partial x} = 1,\quad \frac{\partial^2 f}{\partial y^2} = 2.\]
+
+By $Df(2,3) = 0$, we have $(2,3)$ is a critical point. At $(2,3)$, the
+Hessian matrix
+$\Delta = \begin{bmatrix}-2 & -1 \\ -1 & -2 \end{bmatrix}$. \textbf{(6
+points)}
+
+By \$ -2 \textless{} 0\$ and $\det (\Delta) = 3 > 0$, $\Delta$ is
+negative definite, hence the index of $f$ at $(2,3)$ is $0$. \textbf{(4
+points)}
+
+$(ii)$ Apply the Morse Lemma, near $(2,3)$ the function is approximately
+a paraboloid, has a local minimum at $(2,3)$, and in some new coordinate
+system it is exactly a paraboloid: $f(u,v) = u^2 + v^2 - 3$. \textbf{(5
+points)} $\Box$
+
+    \textbf{7.} \textbf{(15 points)} Construct $f_n,f:[0,1] \to \mathbb{R}$
+such that for all $n$, $f_n(x)$ is discontinuous at all $x\in [0,1]$,
+such that $f(x)$ is continuous on $[0,1]$, and such that $f_n \to f$
+uniformly on $[0,1]$.
+
+    \textbf{Proof.} Denote by $\chi_A$ a function with value $1$ on $A$ and
+value $0$ otherwise. A typical example is
+$f_n = (1/n)\chi_{[0,1] \cap \mathbb{Q}}$ and $f \equiv 0$. There are
+many variants of this example, such as:
+$f_n(x) = x + (1/n)\chi_{[0,1] \cap \mathbb{Q}}$ and $f(x) = x$; or
+$f_n(x) = (1/2^n)\chi_{[0,1] \cap \mathbb{Q}}$ and $f \equiv 0$.
+\textbf{(12 points)}
+
+Anyway, you must show the uniform convergence to get a full credit.
+\textbf{(3 points)} $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

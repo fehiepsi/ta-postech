@@ -1,0 +1,229 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \emph{Note.} In HW\#4, Exercise 4.c, the example is
+$f(x,y) = xy^2/(x^2+y^4)$.
+
+    \subsection*{Analysis I - homework - week
+7}\label{analysis-i---homework---week-7}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 7}
+
+    \textbf{1.} $(a)$ Prove that if $A\subset \mathbb{R}^n$ is compact,
+$B \subset\mathcal{C}(A, \mathbb{R}^m)$ is compact $\Leftrightarrow$ $B$
+is closed, bounded, and equicontinuous.
+
+$(b)$ Let $D = \{f \in\mathcal{C}([0,1], \mathbb{R}) \mid \|f\|\le 1\}$.
+Show $D$ is closed and bounded, but is not compact.
+
+\textbf{Sketch of proof.} $(a)$ For the $(\Rightarrow)$ side, each
+sequence in $B$ has a subsequence converges uniformly to a function $f$.
+Because $B$ is closed, $f\in B$. For the $(\Leftarrow)$ side, clearly
+$B$ is closed and bounded. To show the equicontinuousness, use
+$\epsilon/3$ trick. First, fix $x\in A$. For $\epsilon >0$,
+$B \subset D(f_1,\epsilon/3)\cup \ldots \cup D(f_n,\epsilon/3)$ for some
+$f_1,\ldots,f_n$ (look at Exercise 3 for a similar argument).
+
+$(b)$ To show $D$ is not compact, let $f_n(x) = x^n$, then $\{f_n\}$
+cannot have a subsequence converges (on the contrary, the limit of that
+subsequence is continuous, but the limit must be $g$ with $g(x) = 1$ if
+$x =1$ and $g(x)=0$ if $x < 1$). $\Box$
+
+    \textbf{2.} Suppose $f:\mathbb{R}\to\mathbb{R}$ is continuous and
+$f(1) = 7$. Suppose $f(x)$ is rational for all $x$. Prove $f$ is
+constant.
+
+\textbf{Sketch of proof.} If $f(x) < 7$ and $x < 1$, then $f([x,1])$ is
+connected. So $[f(x) , 7] \subset f([x,1])$. $\Box$
+
+    \textbf{3.} Let $\{f_n\}$ be a uniform convergent sequence of uniform
+continuous functions. Prove that $\{f_n\}$ is equicontinuous.
+
+\textbf{Sketch of proof.} In HW\#6, Exercise 2, we now that $f_n$
+converges to a (uniformly) continuous function $f$. Fix a point
+$a \in X$. Using $\epsilon/3$ trick again, for $\epsilon > 0$, there
+exists $N$ such that $d(f_n(x),f(x)) < \epsilon/3$ for all $x\in X$, for
+all $n > N$. Choose $\delta > 0$ such that $d(f(x),f(a)) < \epsilon /3$
+if $d(x,a) < \delta$. Show that $d(f_n(x),f(a)) < \epsilon$ for all
+$n > N$ and for all $x \in D(a,\delta)$. To conclude, note that
+$\{f_1,f_2,...,f_N\}$ is a finite set, so this set is always
+equicontinuous. Note that the assumption that $f_n$ is uniform
+continuous is not necessary, continuous is enough. $\Box$
+
+    \textbf{4.} Let $f:\mathbb{R}\to\mathbb{R}$ be a uniform limit of
+polynomials. Prove that $f$ is a polynomial.
+
+\textbf{Sketch of proof.} Let $\{p_n\}$ be a sequence of polynomials
+which converges to $f$. First show that if $(p_n - p_m)$ is a polynomial
+and bounded, then it is constant. So there exists $N$ such that
+$a_n = p_n - p_N$ is constant for all $n > N$. By the uniform
+convergence of $\{p_n\}$, $a_n$ converges to some point
+$a\in \mathbb{R}$. Show that $f = a + p_N$.
+
+    \textbf{5.} Prove that if
+
+$(a)$ $f_n$, $g(x)$ continuous, $0 \le x < \infty$,
+
+$(b)$ $|f_n| < g(x)$, $n = 1,2,\ldots$, $0 \le x < \infty$,
+
+$(c)$ $f_n(x) \to f(x)$ uniformly, $0 \le x \le R$, for any
+$R < \infty$,
+
+$(d)$ $\int_0^{\infty}g(x)\,dx < \infty$,
+
+then
+\[\lim_{n\to\infty}\int_0^{\infty}f_n(x)\,dx= \int_0^{\infty}f(x)\,dx.\]
+
+    \textbf{Sketch of proof.} Using $\epsilon/3$ trick, let $\epsilon > 0$.
+There is $R>0$ such that $\int_R^{\infty} g(x)\,dx < \epsilon/3$. We
+have $f_n(x) \to f(x)$ uniformly on $[0,R]$, so there exists $N$ such
+that $\int_0^R|f_n(x) - f(x)| < \epsilon/3$ if $n > N$. Note that
+$|f(x)| \le g(x)$ for all $x\in [0,\infty)$, so
+$\int_R^{\infty} f_n(x)\,dx < \epsilon/3$ and
+$\int_R^{\infty} f(x)\,dx < \epsilon/3$.
+
+    \textbf{6.} $(a)$ \emph{Young's inequality:} Let $p>1$ with $1/p+1/q=1$.
+For $a,b,t>0$, prove that \[ab\le \frac{a^pt^p}{p}+\frac{b^qt^{-q}}{q}\]
+and that $ab$ is the minimum value of the right side.
+
+$(b)$ \emph{Holder's inequality:} Let $a_k,b_k\ge 0$ and $p > 1$, and
+$1/p + 1/q = 1$. Prove that
+\[\sum_1^n a_kb_k\le \left(\sum_1^n a_k^p\right)^{1/p} \left(\sum_1^n b_k^q\right)^{1/q}.\]
+
+$(c)$ \emph{Minkowski's inequality:} Let $a_k,b_k\ge 0$ and $p > 1$.
+Prove that
+\[\left(\sum_1^n (a_k+b_k)^p\right)^{1/p}\le \left(\sum_1^n a_k^p\right)^{1/p} + \left(\sum_1^n b_k^p\right)^{1/p}.\]
+
+\textbf{Sketch of proof.} $(a)$ Put $c=at$, $d=bt^{-1}$, we want to
+prove that \[ cd \le \frac{c^p}{p} + \frac{d^q}{q}.\]
+
+To prove, let logarithm of two sides and note that $\ln(x)$ is a convex
+function:
+$\ln(\lambda x + (1-\lambda)y)\le \lambda\ln(x)+(1-\lambda)\ln(y)$ (the
+second derivative of $\ln(x)$ on $(0,\infty)$ is negative). The equal
+happens when $c^p = d^q$.
+
+$(b)$ Excluding the trivial cases, put
+$c_k = a_k/\left(\sum_1^n a_k^p\right)^{1/p}$,
+$d_k = b_k/\left(\sum_1^n b_k^q\right)^{1/q}$. Then
+$\sum c_k^p = \sum d_k^q = 1$. Apply $(a)$.
+
+$(c)$ We have
+\[\sum(a_k+b_k)^p = \sum(a_k+b_k)^{p-1}a_k + \sum(a_k+b_k)^{p-1}b_k,\]
+and
+\[ \sum(a_k+b_k)^{p-1}a_k \le \left(\sum (a_k+b_k)^{(p-1)q}\right)^{1/q}(\sum a_k^p)^{1/p},\]
+
+\[\sum(a_k+b_k)^{p-1}b_k \le \left(\sum (a_k+b_k)^{(p-1)q}\right)^{1/q}(\sum b_k^p)^{1/p}.\]
+
+    \textbf{7.} Let $f:X\to X$ be a continuous function, where $X$ is a
+complete metric space (such as $\mathbb{R}$) satisfying
+$d(f(x), f(y)) < d(x, y)$ for all $x, y\in X$. Must $f$ have a fixed
+point? Discuss. What if $X$ is compact?
+
+\textbf{Sketch of proof.} Consider $f: (0,\infty)\to (0,\infty)$ with
+$x\mapsto x/2$. If $X$ is compact, consider the function
+$\varphi : X\to\mathbb{R}$ with $x\mapsto d(f(x),x)$. Show that
+$\varphi(X)$ is compact and has the infimum $0$. Conclude that there
+exists $x$ such that $\varphi(x) = 0$.
+
+    \textbf{8.} $(a)$ Define
+$I : \mathcal{C}([0,1], \mathbb{R}) \to \mathbb{R}$ as follow:
+
+\[I(f) =\int_0^1 f(x)\,dx.\]
+
+Prove that I is continuous.
+
+$(b)$ Show that
+
+\[\left\{ f\in\mathcal{C}([0,1], \mathbb{R}) \mid \int_0^1 f(x) \, dx \in (0,3)\right\} \]
+is open.
+
+\textbf{Sketch of proof.} $(a)$ $|(f) - I(g)| \le d(f,g)$.
+
+$(b)$ Consequence of $(a)$.
+
+    \textbf{9.} Let $f_n:[a,b]\to \mathbb{R}$ be uniformly bounded
+continuous functions. Set
+\[F_n(x) = \int_0^x f_n(t)\,dt,\qquad a\le x \le b.\]
+
+Prove $F_n$ has a uniformly convergent subsequence.
+
+\textbf{Sketch of proof.} First, using the uniformly boundedness of
+$f_n$ to show that $\{F_n\}$ is bounded and equicontinuous. Then apply
+Arzela-Ascoli's theorem.
+
+    \textbf{10.} Let
+$T : \mathcal{C}_b([0, r], \mathbb{R}) \to \mathcal{C}_b([0, r], \mathbb{R})$
+be defined by \[ T(f)(x) = \alpha f(x) +\int_0^x k(x,y)f(y)\,dy,\] where
+$\alpha$ is constant and $k : [0, r]^2 \to\mathbb{R}$ is a continuous
+function. Prove that if
+\[ |\alpha|+\sup_{x\in [ 0, r]}\int_0^x |k(x,y)|\,dy = \lambda < 1,\]
+then $T$ is a contraction.
+
+\textbf{Sketch of proof.} We have, for each $x$,
+\[\| T(f)(x)-T(g)(x)\| \le |\alpha| \|f-g\| + \int_0^x|k(x,y)|\|f-g\|\,dy \le \lambda \|f-g\|.\]
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

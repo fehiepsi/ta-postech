@@ -1,0 +1,353 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+6}\label{analysis-i---homework---week-6}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 6}
+
+    \textbf{1.} Let $f_n$ be a function defined on $\mathbb{R}^n$ to metric
+space $\mathbb{R}^n$ and let $f_n$ converges uniformly to $f$. Prove
+that if \[
+A_n := \lim_{t\to x}f_n(t)
+\] exists for all $n$, then \[
+\lim_{t\to x}f(t) = \lim_{n\to\infty}A_n.\]
+
+In other words,
+\[ \lim_{t\to x}\lim_{n\to\infty} f_n(t) = \lim_{n\to \infty}\lim_{t\to x}f_n(t).\]
+
+\textbf{Proof.} For $m > n$, we have
+\[ \|A_m - A_n\| = \|\lim_{t\to x} (f_m(t) - f_n(t))\| = \lim_{t\to x}\|f_m(t) - f_n(t)\|.\]
+
+So for each $\epsilon > 0$, if we take $N\in\mathbb{N}$ such that
+$\|f_m(y) - f_n(y)\| < \epsilon$ for all $m > n > N$, then with such
+$m$, $n$, we have $\|A_m - A_n\| \le \epsilon$. This implies that
+$\{A_n\}$ is a Cauchy sequence, hence converges to a point
+$A\in \mathbb{R}^n$.
+
+Now, fix $\epsilon > 0$. First, we choose $N\in\mathbb{N}$ such that
+$\|f_n(y) -f(y)\| < \epsilon/3$ for all $y\in \mathbb{R}^n$ and for all
+$n\ge N$. Then pick $M > N$ (hence $\|f_M(y)-f(y)\|<\epsilon /3$ for all
+$y$) such that $\|A_M - A\| < \epsilon/3$. With this $M$, we choose
+$\delta > 0$ such that $|f_M(t) - A_M| < \epsilon/3$ if
+$\|t-x\| < \delta$. Put all of these together, we get
+$\|f(t) - A\| < \epsilon$ if $|t-x| < \delta$. This means that
+\[ \lim_{t\to x}f(t) = A = \lim_{n\to\infty} A_n. \Box\]
+
+    \textbf{2.} Let $f_n:\mathbb{R}\to \mathbb{R}$ be uniformly continuous
+and let $f_n$ converge uniformly to $f$. Prove that $f$ is uniformly
+continuous function.
+
+\textbf{Proof.} Let $\epsilon > 0$. There is $N>0$ such that
+$|f_N(z) - f(z)| < \epsilon /3$ for all $z\in \mathbb{R}$. By the
+uniform continuity of $f_N$, there exists $\delta > 0$ such that for all
+$x,y \in \mathbb{R}$, if $|x-y| < \delta$ then
+$|f_N(x) - f_N(y)| < \epsilon /3$ . So for all $x, y\in \mathbb{R}$, if
+$|x - y| < \delta$ then
+\[ |f(x) - f(y)| \le |f(x) -f_N(x)| + |f_N(x) - f_N(y)| + |f_N(y) - f(y)| < \epsilon.\]
+
+This implies that $f$ is uniformly continuous in $\mathbb{R}$. We
+conclude. $\Box$
+
+    \textbf{3.} Prove that $f(x) = \sum x^n/n^2$ is continuous on $[0,1]$.
+
+\textbf{Proof.} For each $n$, let $f_n(x) = \sum_{i=1}^{n} x^i/i^2$. For
+each $x\in [0,1]$, we have \[
+|f_n(x) - f(x)| = \left|\sum_{i=n+1}^{\infty} \frac{x^i}{i^2}\right| \le \sum_{i=n+1}^{\infty}\frac{|x^i|}{i^2} \le \sum_{i=n+1}^{\infty} \frac{1}{i^2}.\]
+
+Let $\epsilon > 0$. Because the series $\sum 1/n^2$ converges, there is
+$N> 0$ such that $\sum_{i=n+1}^{\infty}1/i^2 < \epsilon$ for all
+$n \ge N$. This implies that $|f_n(x) - f(x)| < \epsilon$ for all
+$x\in [0,1]$, for all $n\ge N$. In other words, $f_n$ converges
+uniformly to $f$. Moreover, we have: for each $n$, $f_n$ is continuous
+on the compact set $[0,1]$, hence it is uniformly continuous on $[0,1]$.
+Apply Exercise 2, we conclude that $f$ is uniformly continuous. In
+particular, $f$ is continuous. $\Box$
+
+\emph{Note.} Here we use the result that if $f$ is continuous on a
+compact set $K$, then $f$ is uniformly continuous on $K$. A proof for
+this result is as follow: Let $\epsilon > 0$. For each $x\in K$, there
+exists $\delta_x > 0$ such that for all $y\in K$,
+$|f(x) - f(y)| < \epsilon / 2$ if $|x-y| < \delta_x$. We have
+$\{D(x,\delta_x/2)\mid x\in K\}$ is an open cover of $K$. Because $K$ is
+compact, there exists $x_1 ,\ldots,x_n$ such that
+$K \subset D(x_1 ,\delta_{x_1}/2) \cup\ldots\cup D(x_n,\delta_{x_n}/2)$.
+Let $\delta = \min\{\delta_{x_1}/2,\ldots, \delta_{x_n}/2\} > 0$. If
+$x,y\in K$ and $|x-y| < \delta$, then there exists $x_i$ such that
+$x\in D(x_i,\delta_{x_i}/2)$, hence
+$|x-x_i| < \delta_{x_i}/2 < \delta_{x_i}$. By
+$|y-x| < \delta \le \delta_{x_i}/2$, we have $|y-x_i| < \delta_{x_i}$.
+The way we choose $\delta_{x_i}$ suggests that
+$|f(x) - f(x_i)| < \epsilon/2$ and $|f(y) - f(x_i)| < \epsilon /2$,
+hence $|f(x) - f(y)|< \epsilon$. This is true for every $x,y \in K$ such
+that $|x-y| < \delta$. So $f$ is uniformly continuous.
+
+    \textbf{4.} Suppose $K$ is compact, and
+
+$(a)$ $f_n$ is a sequence of continuous functions on $K$,
+
+$(b)$ $f_n$ converges pointwise to a continuous function $f$ on $K$,
+
+$(c)$ $f_n(x) \ge f_{n+1}(x)$ for all $x\in K$, $n=1,2,3,\ldots$
+
+Then $f_n\to f$ uniformly on $K$.
+
+\textbf{Proof.} Let $\epsilon > 0$. For each $n$, by $f_n - f$ is a
+continuous function, we have $U_n = \{x\mid |f_n(x) - f(x)| <\epsilon\}$
+is an open set. By $f_n$ converges to $f$ pointwise, for each $x$ we
+have $x\in U_n$ for some $n$. So $\{U_n\}$ is an open cover of $K$.
+Because $K$ is compact, there exists $n_1 < \ldots < n_k$ such that
+\[K \subset U_{n_1} \cup \ldots \cup U_{n_k}.\]
+
+For each $x$, we have $\{f_n(x)\}$ is a decreasing sequence and
+converges to $f(x)$. In particular, we have $f_n(x) \ge f(x)$ for all
+$x$, for all $n$. So we may write
+$U_n = \{x\mid f_n(x) < f(x) + \epsilon\}$ for each $n$. The decrease of
+each sequence $\{f_n(x)\}$ now implies that $U_n \subset U_m$ if
+$n < m$. So $K \subset U_{n_k}$ and if we let $N = n_k$ then
+$K \subset U_{n}$ for all $n\ge N$. Note that $K\subset U_n$ means that
+$|f_n(x) - f(x)| < \epsilon$ for all $x\in K$. So we have
+$|f_n(x) - f(x)| < \epsilon$ for all $x\in K$, for all $n\ge N$. In
+other words, $f_n \to f$ uniformly on $K$. $\Box$
+
+    \textbf{5.} Define $\varphi:\mathbb{R} \to \mathbb{R}$ such that
+\[\begin{aligned}
+&\varphi(x)= |x| \qquad (-1<x\le 1),\\
+&\varphi(x+2) = \varphi(x).
+\end{aligned}\]
+
+Prove that \[ f(x) := \sum_{n=1}^{\infty} 2^{-n} \varphi(4^n x) \] is
+continuous on $\mathbb{R}$.
+
+\textbf{Proof.} Remark that as a consequence of Exercise 1, we have: If
+$\{f_n\}$ is a sequence of continuous functions and converges uniformly
+to $f$, then $f$ is a continuous function.
+
+Now, return to this problem, we put
+$s_n = \sum_{k=1}^n 2^{-k}\varphi(4^kx)$. Then by $\varphi$ is a
+continuous function, each $s_n$ is a continuous function. Further more,
+we have $|\varphi(x)| \le 1$ for all $x\in \mathbb{R}$. So by
+$\sum 2^{-n}$ converges, we have the series in definition of $f$
+converges absolutely. Hence $f$ is well-defined.
+
+With the above remark, the remaining thing is to show that $s_n \to f$
+uniformly. This is done because we have \[
+|f(x) - s_n(x)| = \left| \sum_{k=n+1}^{\infty}2^{-k}\varphi(4^kx)\right| \le \sum_{k=n+1}^{\infty}2^{-k} = 2^{-n}
+\] for every $x \in \mathbb{R}$. $\Box$
+
+    \textbf{6.} Suppose $f_n \to f$ uniformly, where $f_n :A\to \mathbb{R}$
+and $g_n \to g$ uniformly where $g_n:A\to \mathbb{R}$ and there is a
+constant $M_1$ such that $\sup_{x\in A}|f(x)| \le M_1$ and there is a
+constant $M_2$ such that $\sup_{x\in A}|g(x)| \le M_2$. Then show that
+$f_ng_n \to fg$ uniformly. Find a counterexample if $M_1$ or $M_2$ does
+not exist.
+
+\textbf{Proof.} Let $\epsilon > 0$, we may suppose that $\epsilon < 1$.
+There exists $N_1$ and $N_2$ such that
+\[|f_n(x)-f(x)| < \epsilon/(M_1+M_2+1)\] for all $n\ge N_1$ and
+\[|g_n(x) - g(x)| < \epsilon /(M_1+M_2+1)\] for all $n\ge N_2$. Put
+$N = \max\{N_1,N_2\}$. For each $n\ge N$ and $x\in A$, we have
+\[\begin{aligned}
+|(f_ng_n)(x)-(fg)(x)| &= |f_n(x)g_n(x) - f(x)g(x)|\\
+&\le |f_n(x)(g_n(x)-g(x))| + |(f_n(x)-f(x))g(x)|\\
+&\le |f_n(x) - f(x)||g_n(x) -g(x)| + |f(x)||g_n(x)- g(x)| + |g(x)||f_n(x) - f(x)| \\
+& <  \frac{\epsilon^2}{(M_1 + M_2 +1)^2} + \frac{\epsilon M_1}{M_1+M_2+1} + \frac{\epsilon M_2}{M_1+M_2+1}\\
+& < \frac{\epsilon}{M_1 + M_2 + 1} + \frac{\epsilon M_1}{M_1+M_2+1} + \frac{\epsilon M_2}{M_1+M_2+1}\\
+& = \epsilon.
+\end{aligned}\].
+
+So $f_ng_n$ converges uniformly to $fg$.
+
+One counterexample for the case $M_1$ or $M_2$ not exist is $f$, $g$
+defined on $[0,\infty)$ by $f(x)=g(x) = x$ and for each $n$, $f_n,g_n$
+defined on $[0,\infty)$ by $f_n(x) = g_n(x) = x+1/n$. Then
+$(fg)(x) = x^2$ and $(f_ng_n)(x) = x^2 + 2x/n + 1/n^2$. For each $n$, we
+have \[|(f_ng_n)(x) - (fg)(x)| = 2x/n + 1/n^2,\] which is greater than
+$1$ if $x = n$. So $f_ng_n$ cannot converges to $fg$ uniformly. $\Box$
+
+    \textbf{7.} Let \[f_n(x) = \begin{cases}
+0 &\text{if } x < \frac{1}{n+1},\\
+\sin^2\frac{\pi}{x} &\text{if } \frac{1}{n+1} \le x \le \frac{1}{n},\\
+0 & \text{if } \frac{1}{n} < x.
+\end{cases}\]
+
+Show that $f_n$ converges to a continuous function, but not uniformly.
+Use the series $\sum f_n$ to show that absolute convergence series, even
+for all $x$, does not imply uniform convergence series.
+
+\textbf{Proof.} Clearly, $f_n(x) = 0$ for all $x\le 0$. For each
+$x > 0$, there exists $N\in\mathbb{N}$ such that $x > 1/N$, hence for
+all $n \ge N$, we have $f_n(x) = 0$. In sum, $f_n(x) \to 0$ for all
+$x\in \mathbb{R}$. For each $n$, we have
+\[ f_n\left( \frac{1}{n+\frac{1}{2}}\right) = \sin^2\left(n\pi + \frac{\pi}{2}\right) = 1.\]
+
+So we cannot have $\{f_n\}$ converges to $0$ uniformly.
+
+Now, we consider the series $\sum f_n$. For each $x\in \mathbb{R}$,
+$f_n(x) = 0$ if $n$ large enough. So at each point $x$, the series is
+indeed a finite sum, hence it converges absulutely. Put
+$F_n = \sum_{k=1}^n f_n$. If $F_n$ converges uniformly to $\sum f_n$
+then $f_n = F_n - F_{n-1}$ converges uniformly to $0$. We get a
+contradiction because $\{f_n\}$ does not converge to $0$ uniformly.
+$\Box$
+
+    \textbf{8.} Prove that if $a_n$ and $b_n$ satisfies the following facts;
+
+$(a)$ the partial sums $A_n$ of $\sum a_n$ form a bounded sequence;
+
+$(b)$ $b_0\ge b_1\ge b_2\ge \ldots$;
+
+$(c)$ $\lim_{n\to\infty}b_n = 0$;
+
+then $\sum a_nb_n$ converges.
+
+\textbf{Proof.} By $(b)$ and $(c)$, we have $b_n \ge 0$ for all $n$.
+Suppose that $|A_n| < C$ for all $n$. For each $n$, put
+$B_n = \sum_{k=1}^na_kb_k$. For each $m > n$, we have \[\begin{aligned}
+|B_m-B_n| &= \left|\sum_{k=n+1}^ma_kb_k\right|\\
+&= \left| \sum_{k=n+1}^m (A_k-A_{k-1})b_k\right|\\
+&= \left| \sum_{k=n+1}^m A_kb_k -\sum_{k=n+1}^{m}A_{k-1}b_k\right|\\
+&= \left| \sum_{k=n+1}^m A_kb_k - \sum_{k=n}^{m-1} A_kb_{k+1}\right|\\
+&= \left| \sum_{k=n+1}^{m-1}A_k(b_k-b_{k+1}) + A_mb_m - A_nb_{n+1}\right|\\
+&\le \sum_{k=n+1}^{m-1} |A_k|(b_k-b_{k+1}) + |A_m|b_m + |A_n|b_{n+1}\\
+&\le \sum_{k=n+1}^{m-1} C(b_k- b_{k+1}) + Cb_m + Cb_{n+1} \\
+&\le C(b_{n+1} -b_m) + Cb_m +Cb_{n+1} \\
+& = 2Cb_{n+1}.
+\end{aligned}\]
+
+For $\epsilon > 0$, if we let $N$ such that $b_N < \epsilon/2C$, then
+for $m > n \ge N$, we have
+\[|B_m - B_n| \le 2Cb_{n+1} \le 2Cb_N < \epsilon.\]
+
+This implies that $B_n$ is a Cauchy sequence. Hence the series
+$\sum a_nb_n$ converges. $\Box$
+
+    \textbf{9.} Let us consider \[\sum_{n=1}^{\infty}\frac{z^n}{n},\] where
+$z$ is a complex number.
+
+$(a)$ Show that for $r < 1$, the series converges uniformly on
+$[|z|\le r]$.
+
+$(b)$ Show that the series converges to continuous function on
+$[|z| < 1]$.
+
+$(c)$ Show that the series converges if $|z|\le 1$ except $z=1$.
+
+\textbf{Proof.} $(a)$ For $r < 1$ and $|z| \le r$, we have
+\[\left|\sum_{n=1}^{\infty} \frac{z^n}{n}\right| \le \sum_{n=1}^{\infty} \frac{|z|^n}{n} \le \sum_{n=1}^{\infty} \frac{r^n}{n} \le \sum_{n=1}^{\infty} r^n = \frac{r}{1-r}.\]
+
+By comparison test, the series $\sum z^n/n$ converges.
+
+$(b)$ Put $f(z) = \sum z^n/n$. To prove that $f$ is continuous on
+$|z|< 1$, we pick any $w\in\mathbb{C}$ such that $|w| < 1$ and show that
+$f$ is continuous at $w$. By $|w| < 1$, there exists $r > 0$ such that
+$|w| < r < 1$. Note that each partial sum is continuous on $[|z|\le r]$,
+hence uniformly continuous on $|z| \le r$ by the compactness of the set
+$[|z|\le r]$ (and by the note after Exercise 3). Moreover, by $(a)$, we
+have the series converges uniformly on $[|z| \le r]$. By Exercise 2, $f$
+is uniformly continuous on $[|z| \le r]$. In particular, $f$ is
+continuous at $w$. We conclude.
+
+$(c)$ At $z=1$, we have the series $\sum 1/n$ diverges. For $|z| \le 1$
+but $z\ne 1$, we have \[
+|\sum_{k=1}^n z^n| = \left|\frac{1-z^{n+1}}{1-z}\right| \le \frac{2}{|1-z|}.
+\]
+
+So the partial sums of $\sum z^n$ form a bounded sequence. Apply
+Exercise 8 with $a_n = z^n$ and $b_n = 1/n$, we conclude that the series
+$\sum z^n/n$ converges. $\Box$
+
+    \textbf{10.} Give an example that $f_k:[0,\infty]\to\mathbb{R}$ are
+continuous functions and $f_k \to f$ uniformly, but \[
+\lim_{k\to\infty}\int_0^{\infty}f_k(x)\,dx \ne \int_0^{\infty} f(x)\,dx.
+\]
+
+\textbf{Proof.} For each $n$, let $f_n$ be defined on $[0,\infty)$ by
+\[f_n(x) = \begin{cases}
+\frac{1}{n} &\text{if }x\le n,\\
+\frac{-x}{n} + \frac{n+1}{n} &\text{if } n < x < n+1,\\
+0 &\text{if }x\ge n+1.
+\end{cases}\]
+
+Clearly, $f_n$ is continuous and $\int_0^{\infty} f_n(x)\,dx \ge 1$ for
+each $n$. Moreover, we have $f_n\to 0$ uniformly and
+$\int_0^{\infty} 0\, dx = 0$. So \[
+\lim_{n\to\infty}\int_0^{\infty}f_n(x)\,dx \ne \int_0^{\infty} 0\,dx.
+\]
+
+We get a required example. $\Box$
+
+    \textbf{11.} Find a sequence $f_n:[0,1]\to \mathbb{R}$ of differentiable
+functions such that $f_n \to 0$ uniformly, but such that $f'_n(1/2)$
+does not converge to $0$.
+
+\textbf{Proof.} Let $f_n(x) = \sin(2n\pi x)/n$. By $|f_n(x)| \le 1/n$
+for all $x \in [0,1]$, the sequence $\{f_n\}$ converges to $0$
+uniformly. But $f'_n(1/2) = 2\pi\cos(n\pi)$ equals to $2\pi$ if $n$ is
+even and $-2\pi$ otherwise. So $\{f'_n(1/2)\}$ does not converge. In
+particular, it does not converge to $0$. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

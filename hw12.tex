@@ -1,0 +1,297 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+12}\label{analysis-i---homework---week-12}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 12}
+
+    \textbf{1.} Let $f:A\subset\mathbb{R}\to \mathbb{R}$, where $A$ is
+bounded and $f$ is bounded and integrable over $A$. Consider another
+bounded integrable function $g:A\to \mathbb{R}$ such that $g(x) = f(x)$
+except on a set $S\subset A$ of measure zero. Then assuming $f$ and $g$
+are integrable on $S$ and $A\backslash S$, prove $\int_A g = \int_A f$.
+
+    \textbf{Proof.} By Theorem 8.5, we have
+$\int_A g = \int_{A\backslash S} g + \int_S g$ and
+$\int_A f = \int_{A\backslash S} f + \int_S f$. By Theorem 8.4, we have
+$\int_S f = \int_S g = 0$. By $f =g$ on $A\backslash S$, we have
+$\int_{A\backslash S}f = \int_{A\backslash S}g$. So
+$\int_A g = \int_A f$. $\Box$
+
+    \textbf{2.} Prove that an increasing function $f:[a,b]\to \mathbb{R}$ is
+Riemann integrable.
+
+    \textbf{Proof.} For each interval $[c,d] \subset [a,b]$, we have
+$\sup{f([c,d])} - \inf{f([c,d])} \le f(b) - f(a)$. So for any partition
+$P$ of $[a,b]$, we have $0\le U(f,P) - L(f,P) \le (f(b) - f(a)) |P|$,
+where $|P|$ denotes the maximal length of intervals in the partition
+$P$. So for $\epsilon > 0$, if we take $\delta > 0$ such that
+$(f(b) - f(a) )\delta < \epsilon$, then for all partition of $P$ of
+$[a,b]$ with $|P| < \delta$, we have $0\le U(f,P) - L(f,P) < \epsilon$.
+This implies that $f$ is Riemann integrable. $\Box$
+
+    \textbf{3.} If $f:A\subset \mathbb{R}^n \to \mathbb{R}$ and
+$g:A \subset \mathbb{R}^n \to \mathbb{R}$ are bounded integrable
+functions on the bounded set $A$ such that $f(x) < g(x)$ for all
+$x\in A$ and $v(A) \ne 0$, then show $\int_A f < \int_A g$.
+
+    \textbf{Proof.} By $f < g$ on $A$, we have $\int_A f \le \int_A g$.
+Suppose on the contrary that $\int_A f = \int_A g$. Then
+$\int_A (g -f) = 0$. So by Theorem 8.4, the set
+$\{x \in A \mid g(x) - f(x) \ne 0\}$ has measure zero. By our
+assumption, we have $A = \{x \in A \mid g(x) - f(x) \ne 0\}$, hence $A$
+has measure zero. From $A$ has measure zero and $A$ has volume, we
+cannot immediately conclude that $v(A) = 0$ to get a contradiction. We
+are going to prove this.
+
+By $A$ is bounded, we have $\bar{A}$ is compact. By $A$ is bounded and
+$A$ has volume, $\partial A$ has measure zero. So $\bar{A}$ has measure
+zero. Let $\epsilon > 0$, there exists a covering of $\bar{A}$ by a
+countable number of open rectangles such that
+$\sum_{i=1}^{\infty} v(S_i) < \epsilon$ (see the note at the end of the
+proof of Theorem 8.1 in textbook). The compactness of $\bar{A}$ implies
+that there exists a finite number of rectangles
+$S_{i_1}, \ldots,S_{i_n}$ which cover $A$. Clearly
+$\sum_{j=1}^n v(S_{i_j}) < \epsilon$. For each $\epsilon > 0$, we have a
+finite covering of $A$ by rectangles which have the total volume less
+than $\epsilon$. So $v(A) = 0$. We get a contradiction. $\Box$
+
+    \textbf{4.} $(a)$ Show that a bounded set $A \subset \mathbb{R}^n$ has
+zero volume if and only if it can be covered by a finite number of
+rectangles of arbitrarily small total volume.
+
+$(b)$ Show that $A\subset \mathbb{R}^n$ has zero volume then it can be
+covered by a countable rectangles of arbitrarily small total volume.
+
+    \textbf{Proof.} $(a)$ $(\Rightarrow)$ Let $S$ be a rectangle which
+encloses $A$ and let $1_A$ be the function which has value $1$ on $A$
+and $0$ on $S\backslash A$. Suppose $v(A) = 0$ and let $\epsilon >0$. By
+Darboux's Theorem, there is a partition $P$ of $S$ into rectangles
+$S_1,\ldots,S_N$ such that for all $x_1\in S_1,\ldots,x_N \in S_N$, we
+have \[\sum_{i=1}^N 1_A (x_i) v(S_i)  < \epsilon.\]
+
+For each $i$ such that $S_i \cap A \ne 0$, take $x_i \in S_i \cap A$, we
+get $1_A(x_i) = 1$. If $S_i \cap A = 0$, then clearly $1_A(x_i) = 0$ for
+all $x_i \in S_i$. So we have
+$\{S_i \mid 1\le i \le N, S_i \cap A \ne 0\}$ covers $A$ and has the
+total volume less than $\epsilon$.
+
+$(\Leftarrow)$ Let $\epsilon > 0$, suppose that there exists a finite
+covering of $A$ by rectangles (with mutually disjoin interiors) of total
+volume less than $\epsilon/2$, says $S_1,\ldots, S_N$. We may suppose
+that $A \cap S_i \ne \varnothing$ for all $i$. Enlarge the sides of
+these rectangles, we find a finite covering of $A$ by rectangles
+$\{S'_i\}_{1\le i \le N}$ of total volume less than $\epsilon$ such that
+for each $i$, $S_i$ is a subset of the interior of $S'_i$. Let $S$ be a
+rectangle which encloses $\{S'_i\}_{1\le i \le n}$. Let $P$ be a
+partition of $S$ which contains $\{S'_i\}_{1\le i \le N}$ (created by
+the edges of $S'_i$), says $S'_1,\ldots,S'_N,S'_{N+1},\ldots,S'_{M}$.
+Then $S'_i \cap A = 0$ for all $i > N$. So
+$0 \le U(1_A , P) = \sum_{i=1}^{N}v(S'_i) < \epsilon$. So
+$\overline{\int}_A 1_A= 0$, hence $\underline{\int}_A 1_A = 0$ and $1_A$
+is integrable with integral $0$. So $A$ has volume and $v(A) = 0$.
+
+$(b)$ Let $1_A$ be the indicator function of $A$ in $\mathbb{R}^n$. The
+set at which $1_A$ discontinuous is $\partial A$. Indeed, because $f= 0$
+on the open set $\mathbb{R}^n \backslash \bar{A}$ and $f = 1$ on the
+open set $\operatorname{int}(A)$, we have $1_A$ is continuous in these
+two sets. For each $x\in \partial A$, there exists a sequence in
+$\mathbb{R}^n \backslash \bar{A}$ converging to $x$ and a sequence in
+$\operatorname{int}(A)$ convering to $x$. The first sequence has value
+$0$ under $f$, the second sequence has value $1$ under $f$, so $f$ is
+discontinuous at $x$.
+
+By Theorem 8.3 (with valid for $A$ unbounded), if $A$ has zero volume,
+then $1_A$ is integrable, so $\partial A$ has measure zero. Moreover,
+$v(A) = 0$ also implies $\operatorname{int}(A) = \varnothing$ (because
+each disc contains a nontrivial rectangle, hence has a positive volume).
+So $A \subset \partial A$, which implies $A$ has measure zero. In other
+words, $A$ can be covered by a countable rectangles of arbitrarily small
+total volume. $\Box$
+
+    \textbf{5.} Let $B\subset \mathbb{R}^n$ be bounded, $f:B\to \mathbb{R}$
+be integrable, $f\ge 0$. If $A\subset B$ and $f$ is integrable on $A$,
+then $\int_A f \le \int_B f$. Is this true if we do not assume
+$f \ge 0$?
+
+    \textbf{Proof.} Let $R$ be a rectangle which encloses $B$, then we have
+$\int_A f = \int_R 1_A f$ and $\int_B f = \int_R 1_B f$. By
+$1_A f \le 1_B f$ on $R$, we conclude that $\int_A f \le \int_B f$.
+
+If we do not assume $f \ge 0$, this is not true in general. For example,
+let $B = [0,1]$, $f = -1$ on $B$, and $A = \varnothing$. Then
+$\int_B f = -1 < 0 = \int_A f$. $\Box$
+
+    \textbf{6.} Let $A\subset \mathbb{R}^n$ be bounded. Prove that if
+$f :A\subset \mathbb{R}^n \to \mathbb{R}$ is continuous, $A$ is open
+with volume, and $\int_B f = 0$ for each $B\subset A$ with volume, then
+$f = 0$.
+
+    \textbf{Proof.} Suppose on the contrary that there exists $x \in A$ such
+that $f(x) \ne 0$. Without loss of generality, suppose more that
+$f(x) = a > 0$. Then by the continuity of $f$, there exists a disk
+$D\equiv D(x,\delta) \subset A$ such that $f > a/2$ on $D$. This implies
+$\int_D f \ge \int_D a/2 = v(D)a/2 > 0$, which is a contradiction. So
+$f = 0$ on $A$. $\Box$
+
+    \textbf{7.} Show that the Cantor set $C \subset [0,1]$ has measure zero.
+
+    \textbf{Proof.} Let $F_1 = [0,1/3] \cup [2/3,1]$ be obtained from
+$[0,1]$ by removing the middle third. Repeatly, obtaining
+\[F_2 = [0,1/9]\cup [2/9,3/9] \cup [6/9,7/9] \cup [8/9,1].\]
+
+In general, $F_n$ is a union of closed intervals and $F_{n+1}$ is
+obtained from $F_n$ by removing the middle third of these intervals.
+Then by definition, $C = \bigcap_{1}^{\infty} F_n$.
+
+For each $n$, we have $v(F_n) = 2^n / 3^n = (2/3)^n$ (which follows from
+$F_n$ has $2^n$ intervals and each interval has length $1/3^n$). So for
+$\epsilon > 0$, there exists $n$ large enough such that
+$v(F_n) < \epsilon /2$. Moreover, similar to Problem 4.a, there exists a
+finite covering of $F_n$ by rectangles of total volume less than
+$\epsilon$. This covering of $F_n$ also encloses $C$ and has total
+volume less than $\epsilon$. So $C$ has volume zero, in particular, $C$
+has measure zero. $\Box$
+
+    \textbf{8.} Let $f:[0,1]\to \mathbb{R}$ be a bounded and $f^2$ is a
+Riemann integrable function. Does it follow that $f$ is a Riemann
+integrable function too?
+
+    \textbf{Proof.} No. Let $f$ be defined by $f(x) = 1$ if
+$x \in \mathbb{Q}$ and $f(x) = -1$ otherwise. Then $f^2 =1$ on $[0,1]$,
+so $f^2$ is a Riemann integrable function. However, for any partition
+$P$ of $[0,1]$, we have $L(f,P) = -1$ and $U(f,P) = 1$, so $f$ is not
+Riemann integrable. $\Box$
+
+    \textbf{9.} Let $p$ and $q$ be positive real numbers such that
+$p^{-1}+q^{-1} =1$. Prove the following statements.
+
+$(a)$ If $u\ge 0$ and $v\ge 0$, then
+\[uv \le \frac{u^p}{p} + \frac{v^q}{q}.\]
+
+Equality holds if and only if $u^p = v^q$.
+
+$(b)$ Let $f:A\subset \mathbb{R}^n \to \mathbb{R}$ and
+$g:A\subset \mathbb{R}^n \to \mathbb{R}$ be non-negative integrable
+functions. Prove that if \[\int_A f^p = \int_A g^q = 1,\] then
+\[\int_A fg \le 1.\]
+
+$(c)$ Prove that if $f:A \subset \mathbb{R}^n \to \mathbb{R}$ and
+$g:A\subset \mathbb{R}^n \to \mathbb{R}$ are integrable functions, then
+\[\left|\int_A fg\right| \le \left(\int_A |f|^p\right)^{1/p} \left(\int_A |g|^q\right)^{1/q}.\]
+
+    \textbf{Proof.} $(a)$ The problem is trivial when $u = 0$ or $v=0$.
+Also, in these cases, the equality holds iff $u = v =0$. Now, suppose
+that $u >0$ and $v > 0$. By the second derivative of $e^x$ on
+$(0,\infty)$ is positive, we have the function $e^x$ is convex on
+$(0,\infty)$. So we have \[\begin{aligned}
+uv &= \exp(\ln(uv)) = \exp(\ln(u) + \ln(v))\\
+&= \exp\left(\frac{1}{p}\ln(u^p) + \frac{1}{q}\ln(v^q)\right) \\
+& \le \frac{1}{p}\exp(\ln(u^p)) +\frac{1}{q}\exp(\ln(v^q)) \\
+&= \frac{u^p}{p} + \frac{v^q}{q}.
+\end{aligned}\]
+
+The above inequality comes from the convexity of $e^x$ and
+$1/p + 1/q = 1$. The equality happens iff $\ln(u^p)  = \ln(v^q)$, or in
+the other words, $u^p = v^q$.
+
+$(b)$ We have
+\[\int_A fg \le \int_A \left( \frac{f^p}{p}+ \frac{f^q}{q}\right) = \frac{\int_A f^p}{p} + \frac{\int_A g^q}{q} = \frac{1}{p} + \frac{1}{q} =1.\]
+
+$(c)$ If $\int_A |f|^p = 0$, then $f = 0$ almost everywhere (outside a
+set of zero measure). So $fg = 0$ almost everywhere. So $\int_A fg = 0$
+by Problem 1. Similarly, if $\int_A |g|^q = 0$, then $\int_A fg = 0$. So
+the inequality is trivial in these two cases.
+
+Now, suppose that $\int_A |f|^p = a\ne 0$ and $\int_A |g|^p = b \ne 0$.
+We have $\int_A |f/a^{1/p}|^p  = 1$ and $\int_A |g/b^{1/q}|^q  = 1$. So
+by $(b)$, we have \[\int_A \frac{fg}{a^{1/p}b^{1/q}} \le 1,\] which is
+equivalent to
+\[\int_A fg \le a^{1/p} b^{1/q} = \left(\int_A |f|^p\right)^{1/p} \left(\int_A |g|^q\right)^{1/q}. \Box\]
+
+    \textbf{10.} Let $f,g,h:A\subset \mathbb{R}^n \to \mathbb{R}$ be
+integrable functions. Define
+\[\|f\|_2 := \left(\int_A|f|^2\right)^{1/2}.\]
+
+Prove the following inequality,
+\[\|f-h\|_2 \le \|f-g\|_2 + \|g- h\|_2.\]
+
+    \textbf{Proof.} First, we show that if $u,v :A \to \mathbb{R}$ be
+integrable functions, then $\|u + v\|_2 \le \|u\|_2 + \|v\|_2$. Indeed,
+we have \[\begin{aligned}
+\|u+v\|_2^2 = \int_A|u+v|^2 &\le \int_A |u+v| (|u|+|v|) \\
+&= \int_A|u+v||u| + \int_A |u+v||v| \\
+& \le \|u+v\|_2 \|u\|_2 + \|u + v\|_2 \|v\|_2 \\
+& =  \|u+v\|_2(\|u\|_2 + \|v\|_2),
+\end{aligned}\] where the last inequality follows Holder's inequality.
+So $\|u + v\|_2 \le \|u\|_2 + \|v\|_2$ (including the case
+$\|u+v\|_2 = 0$, which is trivial).
+
+Now, put $u= f- g$, $v = g-h$, we conclude. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

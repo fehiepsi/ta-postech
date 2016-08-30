@@ -1,0 +1,280 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week 15
+(HW\#14)}\label{analysis-i---homework---week-15-hw14}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 15
+(HW\#14)}
+
+    \textbf{1.} $(a)$ Let $f : [a, b] \to \mathbb{R}$ be differentiable and
+assume that $f'$ is integrable. Prove
+$\int_a^b f'(x)\,dx = f (b) − f(a)$.
+
+$(b)$ Must $f'$ always be integrable?
+
+    \textbf{Proof.} $(a)$ See the lemma in the proof of Problem 1, HW\#13.
+
+$(b)$ No. Consider the function $f:[0,1]\to \mathbb{R}$ be defined by
+$f(x) = x^2 \sin(x^{-2}) $ for $0 < x \le 1$ and $f(0) = 0$. Then
+$f'(x) = 2x\sin(x^{-2}) -2\cos (x^{-1})/x$ if $x>0$ and
+\[f'(0) = \lim_{x\to 0^+}\frac{ x^2\sin(x^{-2}) - 0}{x} =  \lim_{x\to 0^+} x\sin (x^{-2}) = 0\]
+by $\sin (x^{-2}) \le 1$ for any $x > 0$. To show that $f'$ is not
+integrable, it is enough to show that $\cos (x^{-1})/x$ is not
+integrable (because $x\sin(x^{-2})$ is continuous on $[0,1]$, it must be
+integrable). By $\cos (x^{-1})/x$ takes value $2n\pi$ when
+$x = (2n\pi)^{-1}$, this function is unbounded in $(0,1)$, so it is not
+Riemann integrable. We conclude. $\Box$
+
+\emph{Note.} If we regard integrable by improper integrable, we still
+have a counterexample for $(b)$ (e.g.~Volterra's function).
+
+    \textbf{2.} For $x > 0$ define $L(x) = \int_1^x 1/t \,dt$. Prove the
+following, using this definition,
+
+$(a)$ $L$ is increasing in $x$.
+
+$(b)$ $L(xy) = L(x) + L(y)$.
+
+$(c)$ $L'(x) = 1/x$.
+
+$(d)$ $L(1) = 0$.
+
+$(e)$ Properties $(c)$ and $(d)$ uniquely determine $L$.
+
+    \textbf{Proof.} $(a)$ Let $x<y$ then
+$L(y) - L(x) = \int_x^y 1/t \,dt\ge (y-x)(1/y)> 0$. So $L$ is
+increasing.
+
+$(b)$ $L(xy) = \int_1^x 1/t \,dt + \int_x^{xy}1/t \,dt$. By change of
+variables formula from $t\mapsto t/x$, the last integral becomes
+$\int_1^y1/t \,dt$. So $L(xy) = L(x) + L(y)$.
+
+$(c)$ This is a corollary of Question 8.
+
+$(d)$ This is straightforward from definition.
+
+$(e)$ If $L$ satisfies $(c)$ and $(d)$, then, from Question 1, we have
+$L(x) = L(x) - L(1) = \int_1^x 1/t\,dt$. $\Box$
+
+    \textbf{3.} Suppose $f : (0, b] \to \mathbb{R}$ is continuous, positive,
+and integrable on $(0, b]$. Suppose further that as $x \to 0$ from the
+right, $f (x)$ increases monotonically to $+\infty$. Then prove that
+$\varepsilon f (\varepsilon) \to 0$ as $\varepsilon \to 0$.
+
+    \textbf{Proof.} By $f$ is integrable on $(0,b]$,
+$\int_0^b f(t)\,dt = \lim_{x\to 0^+}\int_x^b f(t)\,dt$. So
+$\lim_{x\to 0^+} \int_0^x f(t)\,dt = 0$. By $f(x)$ increases
+monotonically to $+\infty$ as $x\to 0^+$, we have
+$\int_0^x f(t)\,dt \ge x.f(x)$ for any $x > 0$. By $f$ is a positive
+function, we get $x.f(x) > 0$ for any $x > 0$. So
+$\int_0^x f(t)\,dt \ge x.f(x) > 0$ for any $x > 0$. Let $x \to 0^+$, we
+get $xf(x) \to 0$. $\Box$
+
+    \textbf{4.} Show that $\int_1^{\infty} x^{-p}\sin x \, dx$ converges if
+$p > 1$. Show that if $0 < p ≤ 1$, then the convergence is conditional.
+
+    \textbf{Proof.} By $|\sin x | \le 1$, we have
+$|x^{-p}\sin x| \le x^{-p}$. By $\int_1^{\infty} x^{-p}\,dx = 1/(p-1)$
+if $p > 1$, we conclude that $\int_1^{\infty}x^{-p}\sin x \,dx$
+converges if $p > 1$.
+
+For $0 < p \le 1$, use integration by parts, we get
+\[\int_1^R x^{-p}\sin x \,dx =\left. \frac{-\cos x}{x^p}\right|^{x=R}_{x= 1} - \int_1^R \frac{p\cos x}{x^{p+1}}\,dx= \frac{-\cos R}{R^p} + \cos 1 - p \int_1^R \frac{\cos x }{x^{p+1}}\,dx.\]
+
+We have
+\[\int_1^R \left|\frac{\cos x}{x^{p+1}}\right|\,dx \le \int_1^R \frac{1}{x^{p+1}}\, dx = \frac{1-R^{-p}}{p} \le \frac{1}{p}.\]
+
+So $\int_1^R \cos x /x^{p+1}\,dx$ converges as $R\to +\infty$. Moreover,
+we have \[\left | \frac{-\cos R}{R^p} \right | \le \frac{1}{R^p} \to 0\]
+as $R \to +\infty$. So $\int_1^R x^{-p}\sin x \,dx$ converges
+conditionally. $\Box$
+
+    \textbf{5.} The gamma function is defined by the improper integral
+$\Gamma (p) = \int_0^{\infty} e^{-x} x^{p-1} \,dx$. Show that the
+integral is convergent for $p > 0$.
+
+    \textbf{Proof.} We break the above integral into two parts
+$I_1 = \int_0^{1} e^{-x} x^{p-1} \,dx$ and
+$I_2 = \int_1^{\infty} e^{-x} x^{p-1} \,dx$. Both of them will be proved
+to be convergent. Note that since the integrand is non-negative on
+$[0, \infty)$, the convergence of these integrals is equivalent to their
+boundedness from above.
+
+For the first integral, we bound
+$I_1 \le  \int_0^{1} x^{p-1} \,dx = 1/p$.
+
+For the second integral, we use the fact that
+$\lim_{x\to \infty } x^{p-1}/e^{x/2} = 0$ to conclude that there is a
+constant $C > 0$ such that $x^{p-1}\le Ce^{x/2}$ for all
+$x\in [1, \infty)$. This allows us to bound
+$I_2\le \int_1^{\infty} Ce^{-x/2} \,dx= 2Ce^{-1/2}$. $\Box$
+
+    \textbf{6.} Let
+$R([0, 1]) = \{f : [0, 1] → \mathbb{R} \mid f \text{ is Riemann integrable}\}$.
+Set \[d(f,g) = \int_0^1 |f (x) − g(x)|\,dx.\]
+
+Is $d$ a metric on the space $R([0, 1])$?
+
+    \textbf{Proof.} $d$ is not a metric. Let $f$ be the function that equals
+1 at 0 and equals 0 otherwise, and let $g = 2f$, then $f \neq g$ but
+$d(f, g) = 0$. These functions are Riemann integrable because the set of
+their discontinuous points is $\{0\}$, which has measure $0$. $\Box$
+
+    \textbf{7.} Is $\int_0^{\infty}x^p \,dx$ convergent for any $p$? If so,
+which $p$?
+
+    \textbf{Proof.} The integral is not convergent for any $p$ because if
+$p \ne -1$,
+$\int_{\varepsilon}^{N}x^p \,dx = \frac{1}{p+1}(N^{p+1}-\varepsilon^{p+1})$,
+which converges to $+\infty$ as $N \to \infty$ in case $p > -1$, and
+converges to $+\infty$ as $\epsilon\to 0$ in case $p < -1$. If $p=-1$,
+$\int_\varepsilon^{N}x^p \,dx = \log N-\log \varepsilon \to \infty$ as
+$N \to \infty$ (or as $\varepsilon \to 0$). $\Box$
+
+    \textbf{8.} Let $f : [0, 1] → \mathbb{R}$ be integrable and be
+continuous at $x_0$. Show that the map $I_f (x) = \int_0^x f (y)\, dy$
+is differentiable with derivative $f (x_0 )$. Give an example of a
+discontinuous integrable $f$ for which $I_f$ is not differentiable. For
+bounded integrable $f$ prove this map is always continuous.
+
+    \textbf{Proof.} Assume that $f$ is integrable and be continuous at
+$x_0$. Then for every $\epsilon>0$, there exists a $\delta>0$ such that
+$|f(t)-f(x)|\le \epsilon$ whenever $|t-x|\le \delta$. Then for every
+$y\in [0, 1]\cap [x_0-\delta, x_0+\delta]\setminus \{x_0\}$, one has
+\[\left|\frac{I_f(y) - I_f(x_0)}{y-x_0}-f(x_0)\right| \le \frac{1}{|y-x_0|}\left|\int_{x_0}^{y} (f(t) - f(x_0))\,dt\right|\le \epsilon.\]
+
+This proves the first part of the question.
+
+For the second part, let $f(x)  = \chi_{[0, 1/2]}(x)$. One has
+$I_f(x) = x$ if $x \le 1/2$ and $I_f(x) = 1/2$ if $x > 1/2$. This
+function is not differentiable at $1/2$ because its left derivative at
+$1/2$ is $1$ while the right one is $0$.
+
+For the last part, assume that $|f|\le M$ for some $M > 0$. Then for
+every $\varepsilon>0$, if $|y-x|\le \varepsilon / M$ then
+\[|I_f(y) - I_f(x)|\le \left|\int_{x}^y  f(t)\, dt \right| \le |y-x|M \le \varepsilon.\]
+
+Thus, $I_f$ is continuous. $\Box$
+
+    \textbf{9.} Prove that $\lim_{n\to\infty} (n!)^{1/n}/n = e^{−1}$ by
+considering Riemann sums for $\int_0^1 \log x\,dx$ based on the
+partition $1/n < 2/n < \cdots < 1$.
+
+    \textbf{Proof.} Instead of considering the integral
+$\int_0^1 \log x \, dx$, we consider the integral
+$\int_1^{\infty} \log x \,dx$ based on the partition
+$1 < 2 < \cdots < n$. Since the function $x\to \log x$ is monotone
+increasing on the interval $[1, \infty)$, one has
+\[\int_{1}^{n}\log x\,dx = \sum_{i=2}^{n}\int_{i-1}^{i}\log x\, dx \le \sum_{i=2}^{n}\int_{i-1}^{i}\log i\, dx=\sum_{i=2}^{n}\log i = \log(n!).
+\]
+
+Similarly, \[\log (n!)\le \int_{2}^{n+1}\log x\,dx.\]
+
+Thus,
+\[\int_{1}^{n}\log x\,dx\le \log (n!)\le \int_{2}^{n+1}\log x\,dx.\]
+
+Since the antiderivative of $\log x$ is $(x \log x - x)$, one gets
+\[ n\log n-n\le \log (n!)\le (n+1)\log(n+1) - n-2\log 2+1.\]
+
+Hence,
+\[-1\le \frac{\log(n!)}{n}-\log n\le -1 +\log\frac{n+1}{n}+\frac{\log (n+1)}{n}-\frac{2\log 2-1}{n}.\]
+
+Letting $n\to \infty$, one gets $\frac{\log(n!)}{n}-\log n\to -1$ which
+means $\lim_{n\to\infty} (n!)^{1/n}/n = e^{−1}$. $\Box$
+
+    \textbf{10.} It is a fact that
+\[\sin\left(\frac{\pi}{n}\right)\sin\left(\frac{2\pi}{n}\right)\ldots \sin\left(\frac{(n-1)\pi}{n}\right) = \frac{n}{2^{n-1}}.\]
+
+Use this identity to evaluate $\int_0^{\pi}\log \sin x\,dx$. {[}You
+don't need to prove the identity.{]}
+
+    \textbf{Proof.} Note that the function $\log \sin x$ is integrable on
+$(0,\pi/2)$. Indeed, for $x \in (0, \pi/2)$, by $2x/\pi <  \sin x$ (this
+is an elementary inequality, to prove, just consider the function
+$(\sin x - 2x/\pi)$), we have
+\[|\log\sin x| = - \log \sin x = \log \left(\frac{1}{\sin x}\right) < \log \left (\frac{\pi}{2 x}\right) =  \log(\pi/2) - \log (x).\]
+
+We have
+$\int_0^{\pi/2} \log x =( x \log(x) - x)|_{x\to 0}^{x = \pi/2} = \frac{\pi}{2} \log (\pi/2) - \frac{\pi}{2}$.
+So $\log\sin x$ is integrable on $(0,\pi/2)$. By change of variables
+from $x \mapsto (\pi - x)$, we get
+$\int_{\pi/2}^{\pi} \log \sin x \,dx = \int_{0}^{\pi/2} \log \sin x \,dx$.
+So $\log\sin x$ is integrable on $(0,\pi)$.
+
+Let $I=\int_0^{\pi}\log \sin x\,dx$. We don't need the identity in the
+question to evaluate the integral. Using the formula
+$\sin x = 2\sin \frac{x}{2}\cos\frac{x}{2}$, one gets, \[\begin{aligned}
+I &= \int_0^{\pi}\log 2\,dx + \int_0^{\pi}\log \sin \frac{x}{2}\,dx + \int_0^{\pi}\log \cos \frac{x}{2}\,dx\\
+&=\pi \log 2 + 2\int_0^{\pi/2}\log \sin x\,dx + 2\int_0^{\pi/2}\log \cos x\,dx.
+\end{aligned}\] Now, the two last integrals are equal because
+$\sin x = \cos(\pi/2-x)$; and each of them equals $I/2$ because
+$\int_{\pi/2}^{\pi} \log \sin x \,dx = \int_{0}^{\pi/2} \log \sin x \,dx$.
+Hence $I =2I + \pi\log 2$, which readily implies $I = -\pi\log 2$.
+$\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

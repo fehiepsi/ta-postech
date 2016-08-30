@@ -1,0 +1,225 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+6}\label{analysis-i---homework---week-6}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 6}
+
+    \textbf{1.} Let $f_n$ be a function defined on $\mathbb{R}^n$ to metric
+space $\mathbb{R}^n$ and let $f_n$ converges uniformly to $f$. Prove
+that if \[
+A_n := \lim_{t\to x}f_n(t)
+\] exists for all $n$, then \[
+\lim_{t\to x}f(t) = \lim_{n\to\infty}A_n.\]
+
+In other words,
+\[ \lim_{t\to x}\lim_{n\to\infty} f_n(t) = \lim_{n\to \infty}\lim_{t\to x}f_n(t).\]
+
+\textbf{Sketch of proof.} First, show that $\{A_n\}$ is a Cauchy
+sequence. Then, fix $\epsilon > 0$. Choose $N\in\mathbb{N}$ such that
+$\|f_n(y) -f(y)\| < \epsilon/3$ for all $y\in \mathbb{R}^n$ and for all
+$n\ge N$. Then pick $M > N$ such that $\|A_M - A\| < \epsilon/3$. With
+this $M$, we choose $\delta > 0$ such that $|f_M(t) - A_M| < \epsilon/3$
+if $\|t-x\| < \delta$. Conclude. $\Box$
+
+    \textbf{2.} Let $f_n:\mathbb{R}\to \mathbb{R}$ be uniformly continuous
+and let $f_n$ converge uniformly to $f$. Prove that $f$ is uniformly
+continuous function.
+
+\textbf{Sketch of proof.} Using a similar $\epsilon/3$ trick as Exercise
+1. Let $\epsilon > 0$. There is $N>0$ such that
+$|f_N(z) - f(z)| < \epsilon /3$ for all $z\in \mathbb{R}$. By the
+uniform continuity of $f_N$, there exists $\delta > 0$ such that for all
+$x,y \in \mathbb{R}$, if $|x-y| < \delta$ then
+$|f_N(x) - f_N(y)| < \epsilon /3$ . $\Box$
+
+    \textbf{3.} Prove that $f(x) = \sum x^n/n^2$ is continuous on $[0,1]$.
+
+\textbf{Sketch of proof.} If $g$ is continuous on a compact set $K$,
+then $g$ is uniformly continuous on $K$. Now, show that each partial sum
+is continuous and apply Exercise 2. $\Box$
+
+    \textbf{4.} Suppose $K$ is compact, and
+
+$(a)$ $f_n$ is a sequence of continuous functions on $K$,
+
+$(b)$ $f_n$ converges pointwise to a continuous function $f$ on $K$,
+
+$(c)$ $f_n(x) \ge f_{n+1}(x)$ for all $x\in K$, $n=1,2,3,\ldots$
+
+Then $f_n\to f$ uniformly on $K$.
+
+\textbf{Sketch of proof.} Let $\epsilon > 0$. For each $n$, by $f_n - f$
+is a continuous function, we have
+$U_n = \{x\mid |f_n(x) - f(x)| <\epsilon\}$ is an open set. Show that
+$\{U_n\}$ is an open cover of $K$. Because $K$ is compact, there exists
+$n_1 < \ldots < n_k$ such that
+\[K \subset U_{n_1} \cup \ldots \cup U_{n_k}.\]
+
+Show that $K \subset U_n$ for $n$ large enough. Then conclude. $\Box$
+
+    \textbf{5.} Define $\varphi:\mathbb{R} \to \mathbb{R}$ such that
+\[\begin{aligned}
+&\varphi(x)= |x| \qquad (-1<x\le 1),\\
+&\varphi(x+2) = \varphi(x).
+\end{aligned}\]
+
+Prove that \[ f(x) := \sum_{n=1}^{\infty} 2^{-n} \varphi(4^n x) \] is
+continuous on $\mathbb{R}$.
+
+\textbf{Sketch of proof.} If $\{f_n\}$ is a sequence of continuous
+functions and converges uniformly to $f$, then $f$ is a continuous
+function. First, show that the definition of $f$ is well-defined (the
+series converges pointwise). Then show that the series converges
+uniformly to $f$. $\Box$
+
+    \textbf{6.} Suppose $f_n \to f$ uniformly, where $f_n :A\to \mathbb{R}$
+and $g_n \to g$ uniformly where $g_n:A\to \mathbb{R}$ and there is a
+constant $M_1$ such that $\sup_{x\in A}|f(x)| \le M_1$ and there is a
+constant $M_2$ such that $\sup_{x\in A}|g(x)| \le M_2$. Then show that
+$f_ng_n \to fg$ uniformly. Find a counterexample if $M_1$ or $M_2$ does
+not exist.
+
+\textbf{Sketch of proof.} Counterexample: $f(x)=g(x)=x$,
+$f_n(x) = g_n(x) = x+1/n$. $\Box$
+
+    \textbf{7.} Let \[f_n(x) = \begin{cases}
+0 &\text{if } x < \frac{1}{n+1},\\
+\sin^2\frac{\pi}{x} &\text{if } \frac{1}{n+1} \le x \le \frac{1}{n},\\
+0 & \text{if } \frac{1}{n} < x.
+\end{cases}\]
+
+Show that $f_n$ converges to a continuous function, but not uniformly.
+Use the series $\sum f_n$ to show that absolute convergence series, even
+for all $x$, does not imply uniform convergence series.
+
+\textbf{Sketch of proof.} $\{f_n\}$ converges to $0$ pointwise but not
+uniformly. For the series, note that if the series converges uniformly
+then the sequence $\{f_n\}$ converges uniformly to $0$ (hint:
+$f_n=s_n-s_{n-1}$, here $s_n$ is a partial sum). Get a contradiction
+from this. $\Box$
+
+    \textbf{8.} Prove that if $a_n$ and $b_n$ satisfies the following facts;
+
+$(a)$ the partial sums $A_n$ of $\sum a_n$ form a bounded sequence;
+
+$(b)$ $b_0\ge b_1\ge b_2\ge \ldots$;
+
+$(c)$ $\lim_{n\to\infty}b_n = 0$;
+
+then $\sum a_nb_n$ converges.
+
+\textbf{Sketch of proof.} For each $n$, put $B_n = \sum_{k=1}^na_kb_k$.
+For each $m > n$, we have \[\begin{aligned}
+|B_m-B_n| &= \left|\sum_{k=n+1}^ma_kb_k\right|\\
+&= \left| \sum_{k=n+1}^m (A_k-A_{k-1})b_k\right|\\
+&= \left| \sum_{k=n+1}^m A_kb_k - \sum_{k=n}^{m-1} A_kb_{k+1}\right|\\
+&= \left| \sum_{k=n+1}^{m-1}A_k(b_k-b_{k+1}) + A_mb_m - A_nb_{n+1}\right|\\
+&\le \sum_{k=n+1}^{m-1} C(b_k- b_{k+1}) + Cb_m + Cb_{n+1} \\
+&\le 2Cb_{n+1}.
+\end{aligned}\]
+
+Conclude that $\{B_n\}$ is a Cauchy sequence. $\Box$
+
+    \textbf{9} Let us consider \[\sum_{n=1}^{\infty}\frac{z^n}{n},\] where
+$z$ is a complex number.
+
+$(a)$ Show that for $r < 1$, the series converges uniformly on
+$[|z|\le r]$.
+
+$(b)$ Show that the series converges to continuous function on
+$[|z| < 1]$.
+
+$(c)$ Show that the series converges if $|z|\le 1$ except $z=1$.
+
+\textbf{Sketch of proof.} $(a)$ Using comparison test.
+
+$(b)$ Put $f(z) = \sum z^n/n$. Let $|z| < 1$. Show that $f$ is
+continuous at $z$ with a note that $z\in D(0,r)$ for some $r < 1$.
+
+$(c)$ Show that the partial sums of $\sum z^n$ form a bounded sequence.
+Apply Exercise 8 with $a_n = z^n$ and $b_n = 1/n$. $\Box$
+
+    \textbf{10.} Give an example that $f_k:[0,\infty]\to\mathbb{R}$ are
+continuous functions and $f_k \to f$ uniformly, but \[
+\lim_{k\to\infty}\int_0^{\infty}f_k(x)\,dx \ne \int_0^{\infty} f(x)\,dx.
+\]
+
+\textbf{Sketch of proof.} Counterexample: \[f_n(x) = \begin{cases}
+\frac{1}{n} &\text{if }x\le n,\\
+\frac{-x}{n} + \frac{n+1}{n} &\text{if } n < x < n+1,\\
+0 &\text{if }x\ge n+1. \Box
+\end{cases}\]
+
+    \textbf{11.} Find a sequence $f_n:[0,1]\to \mathbb{R}$ of differentiable
+functions such that $f_n \to 0$ uniformly, but such that $f'_n(1/2)$
+does not converge to $0$.
+
+\textbf{Sketch of proof.} Counterexample: $f_n(x) = \sin(2n\pi x)/n$.
+$\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

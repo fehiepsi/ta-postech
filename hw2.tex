@@ -1,0 +1,395 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+2}\label{analysis-i---homework---week-2}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 2}
+
+    \subsubsection*{Section 2.2}\label{section-2.2}
+\addcontentsline{toc}{subsubsection}{Section 2.2}
+
+    \textbf{4.} Do you think it is true that
+$\operatorname{int}(A)\cap \operatorname{int}(B) = \operatorname{int}(A\cap B)$?
+Try some examples.
+
+\textbf{Proof.} Yes. We have $\operatorname{int}(A) \subset A$ and
+$\operatorname{int}(A) \subset B$, hence
+$\operatorname{int}(A)\cap \operatorname{int}(B) \subset A\cap B$.
+Because $\int(A)$ and $\int(B)$ are open, there intersection must be
+open. So
+$\operatorname{int}(A)\cap \operatorname{int}(B) \subset \operatorname{int}(A\cap B)$.
+On the other hand, $\operatorname{int}(A\cap B)$ is a open subset of
+$A\cap B$, hence of both $A$ and $B$. So
+$\operatorname{int}(A\cap B) \subset \operatorname{int}(A)$ and
+$\operatorname{int}(A \cap B \subset \operatorname{int}(B)$. Hence
+$\operatorname{int}(A\cap B) \subset \operatorname{int}(A)\cap \operatorname{int}(B)$,
+and we conclude
+$\operatorname{int}(A)\cap \operatorname{int}(B) = \operatorname{int}(A\cap B)$.
+
+For example, let $A = [0, 2]$, $B = ]1, 3]$. Then
+$\operatorname{int}(A) = ]0,2[$, $\operatorname{int}(B)= ]1,3[$,
+$\operatorname{int}(A) \cap \operatorname{int}(B) = ]1,2[$, and
+$\operatorname{int}(A\cap B) = \operatorname{int}(]1,2]) = ]1,2[$.
+$\Box$
+
+    \subsubsection*{Section 2.3}\label{section-2.3}
+\addcontentsline{toc}{subsubsection}{Section 2.3}
+
+    \textbf{1.} Let $S = \{(x,y)\in \mathbb{R}^2 \mid x,y \ge 1\}$. Is $S$
+closed?
+
+\textbf{Proof.} Yes. The complement of $S$ is the union of two open sets
+$\{(x,y)\mid x < 1\}$ and $\{(x,y)\mid y < 1\}$. So the complement of
+$S$ is open. By defition of a closed set, we conclude. $\Box$
+
+    \textbf{4.} Let $A \subset \mathbb{R}^n$ be arbitrary. Show
+$\mathbb{R}^n\backslash(\operatorname{int} A)$ is closed.
+
+\textbf{Proof.} Because $\operatorname{int}(A)$ is an open set, by
+definition of a closed set, we have
+$\mathbb{R}^n\backslash (\operatorname{int} A)$ is closed. $\Box$
+
+    \subsubsection*{Section 2.5}\label{section-2.5}
+\addcontentsline{toc}{subsubsection}{Section 2.5}
+
+    \textbf{3.} Let
+$A = \{(x,y)\in \mathbb{R}^2 \mid x \text{ is rational}\}$. Find
+$\operatorname{cl}(A)$.
+
+\textbf{Proof.} We claim that $\operatorname{cl}(A) = \mathbb{R}^2$.
+Indeed, let $(x,y)\in \mathbb{R}$ and $\epsilon > 0$. There is a ration
+point $q \in ]x-\epsilon, x+\epsilon[$. We have
+$d((q,y),(x,y)) = |q-x| < \epsilon$, so
+$(q,y) \in D((x,y),\epsilon) \cap A$. This implies that
+$D((x,y),\epsilon) \cap A \neq \varnothing$ for all $\epsilon >0$, hence
+$(x,y) \in \operatorname{cl}(A)$. This is true for all
+$(x,y)\in \mathbb{R}^2$. We conclude. $\Box$
+
+    \textbf{5.} Let $A\subset \mathbb{R}$ and $x= \sup(A)$. Show
+$x\in \operatorname{cl}(A)$.
+
+\textbf{Proof.} Let $\epsilon > 0$. By defition of $\sup$, there exists
+$a \in A$ such that $x - \epsilon < a$. Moreover, because $x = \sup(A)$,
+$a\le x$. So we have $d(a,x) < \epsilon$, hence
+$D(x,\epsilon)\cap A \neq \varnothing$. Because this is true for all
+$\epsilon > 0$, $x\in \operatorname{cl}(A)$. $\Box$
+
+    \subsubsection*{Section 2.6}\label{section-2.6}
+\addcontentsline{toc}{subsubsection}{Section 2.6}
+
+    \textbf{4.} Is
+$\operatorname{bd}(A) = \operatorname{bd}(\operatorname{int} A)$?
+
+\textbf{Proof.} No. For example, take $A = \{0\} \cup [1,2]$, then
+$\operatorname{bd}(A) = \{0,1,2\}$, $\operatorname{int}(A) = ]1,2[$, and
+$\operatorname{bd}(\operatorname{int}(A)) = \{1,2\}\neq \operatorname{bd}(A)$.
+$\Box$
+
+    \subsubsection*{Section 2.7}\label{section-2.7}
+\addcontentsline{toc}{subsubsection}{Section 2.7}
+
+    \textbf{1.} Find the limit of the sequence $[(\sin n)^n/n, 1/n^2]$ in
+$\mathbb{R}^2$.
+
+\textbf{Proof.} We have $|(\sin n)^n/n| = |\sin n|^n/n \leq 1/n$
+(because $|\sin n| \leq 1$ for all $n$). Because $1/n$ converges to $0$
+as $n \to \infty$, we have $|(\sin n)^n/n|$, hence $(\sin n)^n/n$,
+converges to $0$ as $n \to \infty$. Moreover, we also have $1/n^2$
+converges to $0$ as $n\to \infty$. On the whole, the sequence
+$[(\sin n)^n/n, 1/n^2]$ converges to $(0,0)$ as $n\to \infty$. $\Box$
+
+    \textbf{3.} Let $A\subset \mathbb{R}^m$, $x_n\in A$, and $x_n \to x$.
+Show that $x\in \operatorname{cl}(A)$.
+
+\textbf{Proof.} For $\epsilon > 0$, because $x_n \to x$, there is $N$
+large enough such that $d(x_n, x) < \epsilon$ for all $n\ge N$. In
+particular, we have $x_N \in D(x, \epsilon)$, hence
+$x_N \in D(x, \epsilon)\cap A$. So
+$D(x, \epsilon)\cap A \neq \varnothing$ for all $\epsilon > 0$, which
+means that $x\in \operatorname{cl}(A)$. $\Box$
+
+    \subsubsection*{Section 2.8}\label{section-2.8}
+\addcontentsline{toc}{subsubsection}{Section 2.8}
+
+    \textbf{1.} Determine if $\sum_{n=1}^{\infty}((\sin n)/n^2,1/n^2)$
+converges.
+
+\textbf{Proof.} Yes. Indeed, the series converges absolutely. This comes
+from
+\[\left\|((\sin n)/n^2,1/n^2)\right\| = \frac{\sqrt{(\sin n)^2 + 1}}{n^2} \le \frac{2}{n^2}\]
+and the series $\sum_{n=1}^{\infty}2/n^2$ converges. $\Box$
+
+    \textbf{5.} Test for convergence $\sum_{n=0}^{\infty}n!/3^n$.
+
+\textbf{Proof.} For $n \ge 6$, we have $n/3 \ge 2$, hence
+$n!/3^n \ge (5!/3^5)2^{n-5}$. So $n!/3^n$ converges to infinity as
+$n\to \infty$. If the series converges, then $n!/3^n$ must converges to
+$0$ as $n\to \infty$, a contradiction. So $\sum_{n=0}^{\infty}n!/3^n$
+diverges. $\Box$
+
+    \textbf{1.} Discuss whether the following sets are open or closed:
+
+$(a)$ $]1,2[$ in $\mathbb{R}^1=\mathbb{R}$
+
+$(b)$ $[2,3]$ in $\mathbb{R}$
+
+$(c)$ $\bigcap_{n=1}^{\infty}[-1,1/n[$ in $\mathbb{R}$
+
+$(d)$ $\mathbb{R}^n$ in $\mathbb{R}^n$
+
+$(e)$ A hyperplane in $\mathbb{R}^n$
+
+$(f)$ $\{r\in ]0,1[\mid r \text{ is rational}\}$ in $\mathbb{R}$
+
+$(g)$ $\{(x,y)\in \mathbb{R}^2 \mid 0 < x \le 1\}$ in $\mathbb{R}^2$
+
+$(h)$ $\{x\in \mathbb{R}^n \mid \|x\| = 1\}$ in $\mathbb{R}^n$.
+
+\textbf{Proof.} $(a)$ Open.
+
+$(b)$ Closed.
+
+$(c)$ $\bigcap_{n=1}^{\infty}[-1,1/n[ = [-1,0]$ is closed.
+
+$(d)$ Both open and closed.
+
+$(e)$ Closed.
+
+$(f)$ Neither open nor closed.
+
+$(g)$ Neither open nor closed.
+
+$(h)$ Closed. $\Box$
+
+    \textbf{2.} Determine the interiors, closures, and boundaries of the
+sets in Exercise 1.
+
+\textbf{Proof.} Denote each set by the same notation $A$.
+
+$(a)$ $\operatorname{int}(A) = ]1,2[=A$, $\operatorname{cl}(A) = [1,2]$,
+and $\operatorname{bd}(A) = \{1,2\}$.
+
+$(b)$ $\operatorname{int}(A) = ]2,3[$, $\operatorname{cl}(A) = [2,3]=A$,
+and $\operatorname{bd}(A) = \{2,3\}$.
+
+$(c)$ $A = [-1, 0]$, $\operatorname{int}(A) = ]-1,0[$,
+$\operatorname{cl}(A) = [-1,0]=A$, and
+$\operatorname{bd}(A) = \{-1,0\}$.
+
+$(d)$ $\operatorname{int}(A) = \mathbb{R}^n=A$,
+$\operatorname{cl}(A) = \mathbb{R}^n=A$, and
+$\operatorname{bd}(A) = \varnothing$.
+
+$(e)$ $\operatorname{int}(A) = \varnothing$, $\operatorname{cl}(A) = A$,
+and $\operatorname{bd}(A) = A$.
+
+$(f)$ $\operatorname{int}(A) = \varnothing$,
+$\operatorname{cl}(A) = [0,1]$, and $\operatorname{bd}(A) = [0,1]$.
+
+$(g)$ $\operatorname{int}(A) = \{(x,y)\mid 0< x< 1\}$,
+$\operatorname{cl}(A) = \{(x,y)\mid 0\le x\le 1\}$, and
+$\operatorname{bd}(A) = \{(x,y)\mid x = 0 \text{ or } x=1\}$.
+
+$(h)$ $\operatorname{int}(A) = \varnothing$,
+$\operatorname{cl}(A) = \{x\mid \|x\| = 1\} = A$, and
+$\operatorname{bd}(A) = \{x\mid \|x\| = 1\} = A$. $\Box$
+
+    \textbf{5.} Show that $x\in \operatorname{int}(A)$ iff there is an
+$\epsilon > 0$ so that $D(x,\epsilon) \subset A$.
+
+\textbf{Proof.} By definition, $x\in \operatorname{int}(A)$ iff there is
+an open set $U$ so that $x\in U\subset A$. First, suppose that
+$x\in \operatorname{int}(A)$, then there is an open set $U$ so that
+$x\in U\subset A$, hence there is an $\epsilon > 0$ such that
+$D(x,\epsilon) \subset U$. Because $U \subset A$, we have
+$D(x,\epsilon) \subset A$. On the other hand, suppose that there is an
+$\epsilon > 0$ so that $D(x,\epsilon)\subset A$. Clearly,
+$D(x,\epsilon)$ is an open subset of $A$. So $x$ is an interior point of
+$A$, which means $x\in \operatorname{int}(A)$. We conclude. $\Box$
+
+    \textbf{10.} Determine which of the following statements are true:
+
+$(a)$ $\operatorname{int}(\operatorname{cl}(A)) = \operatorname{int}(A)$
+
+$(b)$ $\operatorname{cl}(A)\cap A = A$
+
+$(c)$ $\operatorname{cl}(\operatorname{int}(A)) = A$
+
+$(d)$ $\operatorname{bd}(\operatorname{cl}(A)) = \operatorname{bd}(A)$
+
+$(e)$ If $A$ is open,
+$\operatorname{bd}(A) \subset \mathbb{R}^n\backslash A$
+
+\textbf{Proof.} $(a)$ No. Let $A = [0,1[ \cup ]1,2]$, then
+$\operatorname{cl}(A) = [0,2]$,
+$\operatorname{int}(\operatorname{cl}(A))=]0,2[$, and
+$\operatorname{int}(A) = ]0,1[ \cup ]1,2[\neq \operatorname{int}(\operatorname{cl}(A))$.
+
+$(b)$ Yes. It is clear that $\operatorname{cl}(A) \cap A \subset A$.
+Moreover, by $A \subset \operatorname{cl}(A)$, we also have
+$A \subset \operatorname{cl}(A)\cap A$. So
+$\operatorname{cl}(A)\cap A = A$.
+
+$(c)$ No. Let $A = ]0,1[$, then $\operatorname{int}(A) = ]0,1[$ and
+$\operatorname{cl}(\operatorname{int}(A)) = [0,1]\neq A$.
+
+$(d)$ No. Let $A = [0,1[\cup ]1,2]$, then
+$\operatorname{cl}(A) = [0,2]$,
+$\operatorname{bd}(\operatorname{cl}(A)) = \{0,2\}$, and
+$\operatorname{bd}(A)=\{ 0,1,2\} \neq \operatorname{bd}(\operatorname{cl}(A))$.
+
+$(e)$ Yes. Suppose $A$ is open. It is enough to show that $x\notin A$
+for every $x\in \operatorname{bd}(A)$. Indeed, let
+$x\in \operatorname{bd}(A)$. If $x\in A$, then there exists
+$\epsilon >0$ such that $D(x,\epsilon)\subset A$. Thus
+$D(x,\epsilon)\cap (\mathbb{R}^n\backslash A) = \varnothing$, which
+contradicts to the assumption that $x\in \operatorname{bd}(A)$. $\Box$
+
+    \textbf{19.} Define a limit point of a set $A$ to be a point
+$x\in \mathbb{R}^n$, such that if $U$ is any neighborhood of $x$, then
+$U\cap A \neq \varnothing$.
+
+$(a)$ What is the difference between limit points and accummulation
+points? Give examples.
+
+$(b)$ If $x$ is a limit point of $A$, then show that there is a sequence
+$x_n\in A$ with $x_n \to x$.
+
+$(c)$ If $x$ is an accumulation point of $A$, then show that $x$ is a
+limit point of $A$. Is the converse true?
+
+$(d)$ If $x$ is a limit point of $A$ and $x\notin A$, then show that $x$
+is an accumulation point.
+
+$(e)$ Prove: a set is closed iff it contains all of its limit points.
+
+\textbf{Proof.} $(a)$ The difference between limit points and
+accummulation points is that if $U$ is a neighborhood of an accumulation
+point $x$, then $(U \cap A)\backslash \{x\} \neq \varnothing$, which
+means the intersection requires the existence of a point differing $x$.
+So an accumulation point is a limit point, but not reversely. For
+example, the set of limit points of $A = \{0\}\cup [1,2]$ is
+$\{0\}\cup [1,2]$, but the set of accumulation points of $A$ is $[1,2]$.
+
+$(b)$ Suppose $x$ is a limit point of $A$. For each $n$, we can take
+$x_n \in D(x,1/n)\cap A$ because $D(x,1/n)\cap A \neq \varnothing$. By
+$d(x_n,x)< 1/n$ for all $n$, we have $x_n \to x$.
+
+$(c)$ As $(a)$.
+
+$(d)$ Suppose $x$ is a limit point of $A$ and $x\notin A$. Let $U$ be an
+neighborhood of $x$. By definition of a limit point,
+$U \cap A\neq \varnothing$. Let $y \in U\cap A$, then $y \neq x$ because
+$y \in A$ but $x\notin A$. So $y \in (U\cap A) \backslash \{x\}$, which
+implies that $x$ is an accumulation point.
+
+$(e)$ For the $(\Rightarrow)$ side, suppose $A$ is a closed set. Let $x$
+be a limit point of $A$, then there is a sequence $x_n \in A$ with
+$x_n \to x$. Thus $x\in A$ because $A$ is closed. Thus $A$ contains all
+of its limit points. For the $(\Leftarrow)$ side, suppose $A$ contains
+all of its limit points. Suppose that $x_n$ is a sequence in $A$ and
+converges to $x$. To prove that $A$ is closed, it is enough to show that
+$x\in A$. Indeed, for each $\epsilon > 0$, there exists $N$ such that
+$x_N \in D(x,\epsilon)$. So $D(x,\epsilon)\cap A \neq \varnothing$ for
+all $\epsilon > 0$, which means $x$ is a limit point of $A$. By
+assumption, we get $x\in A$. $\Box$
+
+    \textbf{21.} Prove that a sequence $x_k$ is a Cauchy sequence in
+$\mathbb{R}^n$ iff for every neighborhood $U$ of $0$, there is an $N$
+such that $k,l \ge N$ implies $x_k - x_l \in U$.
+
+\textbf{Proof}. For the $(\Rightarrow)$ side, suppose that $x_k$ is a
+Cauchy sequence and $U$ is a neighborhood of $0$. Because $U$ is a
+neighborhood of $0$, there exists $\epsilon > 0$ such that
+$D(0,\epsilon) \subset U$. Because $x_k$ is a Cauchy sequence, there is
+an $N$ such that $k,l\ge N$ implies $\|x_k - x_l\| < \epsilon$, hence
+$x_k-x_l \in U$. For the $(\Leftarrow)$ side, for each $\epsilon > 0$,
+take $U = D(0,\epsilon)$, then there is an $N$ such that $k,l \ge N$
+implies $x_k -x_l \in U$. But $x_k - x_l \in U=D(0,\epsilon)$ implies
+$\|x_k-x_l\| < \epsilon$. So $x_k$ is a Cauchy sequence. We conclude.
+$\Box$
+
+    \textbf{25.} Prove that a set $A\subset \mathbb{R}^n$ is open iff we can
+write $A$ as the union of some family of $\epsilon$-discs.
+
+\textbf{Proof.} The $(\Leftarrow)$ side is trivial because each
+$\epsilon$-disc is open and the union of open set is a open set. For the
+$(\Rightarrow)$ side, suppose $A$ is open, then for each $x\in A$, there
+is $\epsilon_x > 0$ such that $D(x,\epsilon_x) \subset A$. So we have
+$\bigcup_{x\in A} D(x,\epsilon_x) \subset A$. But for each $x\in A$,
+$x\in D(x,\epsilon_x)$. Hence
+$A \subset \bigcup_{x\in A}D(x,\epsilon_x)$. We conclude that
+$A = \bigcup_{x\in A}D(x,\epsilon_x)$. $\Box$
+
+    \textbf{32.} Let $A\subset \mathbb{R}^n$ be closed and $x_n\in A$ a
+Cauchy sequence. Prove $x_n$ converges to a point in $A$.
+
+\textbf{Proof.} Because $\mathbb{R}^n$ is complete and $x_n$ is a Cauchy
+sequence, we have $x_n$ converges to a point $x$ in $\mathbb{R}^n$.
+Because $A$ is closed, this limit point must lie in $A$. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

@@ -1,0 +1,296 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+3}\label{analysis-i---homework---week-3}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 3}
+
+    \textbf{1.} Give an example of an open cover of the segment $(0,1)$
+which has no finite subcover.
+
+\textbf{Proof.} For each $n$, let $I_n = (\frac{1}{n+2},\frac{1}{n})$.
+It is clear that $\{I_n\}$ is an open cover of $(0,1)$. Now, suppose the
+contradiction that $(0,1)\subset \bigcup_{n\in A} I_n$, where $A$ is
+finite. Because $A$ is finite, we may let $m \ge 2$ such that
+$m-1 \notin A$. Due to $1/m \in \bigcup_{n\in A} I_n$,
+$1/m \in I_{m-1}$, and $1/m \notin I_k$ if $k \ne m-1$, we must have
+$m-1 \in A$, which is a contradiction. So $\{I_n\}$ has no finite
+subcover of $(0,1)$. $\Box$
+
+    \textbf{2.} Suppose $K\subset Y\subset X$. Prove that $K$ is compact in
+$X$ if and only if $K$ is compact in $Y$.
+
+\textbf{Proof.} For the $(\Rightarrow)$ side, let $\{U_{\alpha}\}$ be an
+open cover of $K$ in $Y$. By definition, for each $\alpha$,
+$U_{\alpha} = V_{\alpha} \cap Y$ with $V_{\alpha}$ is an open set in
+$X$. Because $U_{\alpha} \subset V_{\alpha}$, we have $\{V_{\alpha}\}$
+is an open cover of $K$ in $X$. Now, the compactness of $K$ leads to the
+existence of a finite open subcover $\{V_{1},V_{2},\ldots,V_{k}\}$ of
+$K$. Because $K \subset Y$, we have
+\[ K \subset \left(\bigcup_{i=1}^{k} V_{i}\right)\cap Y = \bigcup_{i=1}^k (V_{i} \cap K) = \bigcup_{i=1}^k U_{i}.\]
+
+Hence $\{U_{i}\}_{i=1}^k$ is a finite open subcover of $K$, which
+implies that $K$ is compact in $Y$.
+
+For the $(\Leftarrow)$ side, let $\{U_{\alpha}\}$ be an open cover of
+$K$ in $X$. Then $\{U_{\alpha} \cap Y\}$ is an open cover of $K$ in $Y$.
+Because $K$ is compact in $Y$, there exists a finite open subcover of
+$K$ in $Y$, which is written as $\{U_{i}\cap Y\}_{i=1}^k$. Note that
+$U_{i}\cap Y \subset U_{i}$ for all $i$. So $\{U_{i}\}_{i=1}^k$ is also
+an open cover of $K$ in $X$. This implies that $K$ is compact in $X$.
+$\Box$
+
+    \textbf{3.} Let $K_1$ and $K_2$ be compact subsets of $\mathbb{R}$.
+Prove that $K_1 \times K_2$ is compact.
+
+\textbf{Proof.} Note that, by Exercise 2.24, each open set in
+$\mathbb{R}^2$ is an union of open sets having the form $U\times V$,
+where $U, V$ is open is $\mathbb{R}$. Hence we may just consider an open
+cover $\{U_{\alpha}\times V_{\alpha}\}$ of $K_1\times K_2$ and find a
+finite subcover from it.
+
+Let $x\in K_1$, let $A_x = \{\alpha: x\in U_{\alpha}\}$. Because
+$\{x\}\times K_2 \subset K_1 \times K_2$, we have
+$\{V_{\alpha}\}_{\alpha \in A_x}$ is an open cover of $K_2$, hence there
+exists $\alpha_{x1},\alpha_{x2},\ldots,\alpha_{xn(x)} \in A_x$ such that
+$K_2 \subset \bigcup_{i=1}^{n(x)}V_{\alpha_{xi}}$. Now, let
+$W_x =\bigcap_{i=1}^{n(x)}U_{\alpha_{xi}}$, then $x \in W_x$, $W_x$ is
+open, and
+\[ W_x \times K_2 \subset \bigcup_{i=1}^{n(x)}W_{x}\times V_{\alpha_{xi}}\subset \bigcup_{i=1}^{n(x)}U_{\alpha_{xi}}\times V_{\alpha_{xi}}.\]
+
+For each $x$, if we let $W_x$ be defined as above, then
+$\{W_x\}_{x\in K_1}$ is an open cover of $K_1$. Hence there exists
+$\{x_1,x_2,\ldots,x_t\}$ such that
+\[ K_1 \subset \bigcup_{j=1}^{t} W_{x_t}.\]
+
+We are ready to get a finite open subcover of $K_1\times K_2$ from
+$\{U_{\alpha}\times V_{\alpha}\}$ as follows: \[
+K_1 \times K_2 \subset \bigcup_{j=1}^{t} W_{x_t}\times K_2 \subset \bigcup_{j=1}^{t} \bigcup_{i=1}^{n(x_j)}U_{\alpha_{x_ji}}\times V_{\alpha_{x_ji}}. \Box
+\]
+
+    \textbf{4.} Prove that $A = \mathbb{Q} \cap (\sqrt{2},\sqrt{3})$ is
+closed relative to $\mathbb{Q}$ and bounded, but is not compact.
+
+\textbf{Proof.} It is clear that
+$A = \mathbb{Q} \cap [\sqrt{2},\sqrt{3}]$. So it is closed relative to
+$\mathbb{Q}$ and bounded. Suppose that $A$ is compact, which means that
+every sequence in $A$ has a subsequence converging to a point in $A$.
+Now, let $q_n \in (\sqrt{2},\sqrt{3})$ such that $q_n \to \sqrt{2}$ as
+$n\to \infty$. By assumption, $q_n$ has a subsequence converging to a
+point $q\in A$. However, $q_n \to \sqrt{2}$ as $n\to \infty$ implies
+$q = \sqrt{2}$, which is not in A. We get a contradiction. $\Box$
+
+    \textbf{5.} Let $A,B\subset \mathbb{R}^n$ with $A$ compact, $B$ closed,
+and $A\cap B = \varnothing$.
+
+$(a)$ Show there is an $\epsilon > 0$ so that $d(x,y) > \epsilon$ for
+all $x\in A$, $y\in B$.
+
+$(b)$ Is $(a)$ true if $A$, $B$ are merely closed?
+
+\textbf{Proof.} $(a)$ Let $\delta = \inf\{d(x,y)\mid x\in A, y\in B\}$.
+Clearly, $\delta \ge 0$. If $\delta = 0$, then there exist two sequences
+$\{x_n\}\subset A$ and $\{y_n\}\subset B$ such that $d(x_n,y_n)\to 0$ as
+$n \to \infty$. Because $A$ is compact, there is a subsequence
+$\{x_{n_k}\}$ converging to a point $x \in A$. We have
+$d(x,y_{n_k}) \le d(x,x_{n_k}) + d(x_{n_k},y_{n_k})$ and the latter two
+sequences converge to $0$ as $k \to \infty$. So $y_{n_k} \to x$ as
+$k \to \infty$. Now, the assumption that $B$ is closed leads to
+$x \in B$, hence $x\in A\cap B$ (a contradiction).
+
+So we must have $\delta > 0$. Now, let $\epsilon = \delta /2$, we get
+the conclusion.
+
+$(b)$ No. Let $A = \{ n: n\ge 2\}$ and $B = \{n+1/n: n\ge 2\}$. It is
+clear that both $A$ and $B$ are closed. Moreover,
+$d(n, n+1/n) = 1/n \to 0$ as $n\to \infty$. So there cannot exist
+$\epsilon$ as $(a)$ in this case. $\Box$
+
+    \textbf{6.} \emph{(removed)} Let $A = \{0\}\times [-1,1]$,
+$B = \{(x,\sin(1/x))\mid x > 0\}$ and $C = A\cup B$. Show that $C$ is
+connected but not path-connected.
+
+\textbf{Proof.} $(connected)$ It is clear that $A$ is connected and $B$
+is connected ($B$ is the image of the connected interval $I=(0,\infty)$
+of the continuous (on $I$) map $x\mapsto (x,sin(1/x))$, see Theorem
+4.2.2). If we let $x_n = 1/(n\pi)$, then
+$(x_n,\sin(1/x_n)) = (1/(n\pi), 0) \to (0,0)$ as $n\to \infty$. So
+$(0,0) \in \operatorname{cl}(B)$. By Exercise 8.a, $B \cup \{(0,0)\}$ is
+connected. Moreover, $A \cap (B\cup \{(0,0)\})\neq \varnothing$. By
+Exercise 8.c, $C = A \cup B = A \cup B \cup \{(0,0)\}$ is connected.
+
+$(not\ path-connected)$ Suppose on the contradiction that there is a
+path $\varphi:[0,2]\to \mathbb{R}^2$ connecting $(0,0)$ and $(1,\sin 1)$
+in $A\cup B$. Let $\pi_x$ be the projection to $x$-axis, which is
+$(x,y)\mapsto x$, and let $x_n= 1/((n+1/2)\pi)$. Because
+$\pi_x\circ \varphi$ is continuous, we have
+$[0,1]\subset \pi_x\circ\varphi ([0,2])$, hence the set
+$\{s\in [0,2]\mid \pi_x ( \varphi(s)) = x_n\}$ is not empty for all $n$.
+For each $n$, let
+$t_n = \inf\{s\in [0,2]\mid \pi_x ( \varphi(s)) = x_n\}$. The continuity
+of $\pi_x\circ \varphi$ also implies $\pi_x(\varphi(t_n)) = x_n$ and
+$\pi_x\circ \varphi([0, t_n])$ is a connected set. So
+$x_{n+1}\in [0,x_n]\subset \pi_x\circ \varphi([0, t_n])$ and
+$x_{n+1} = \pi_x(\varphi(t))$ for some $t\in [0,t_n]$. Hence
+$t_{n+1}\le t_n$ for all $n$.
+
+We have shown that $\{t_n\}$ is a decreasing sequence and bounded from
+below by $0$, so it must converge. Hence $\{\varphi(t_n)\}$ converges,
+which implies the convergence of $\{\sin (1/x_n)\}$. But $\sin (1/x_n)$
+is $1$ if $n$ even and $-1$ if $n$ odd. So it diverges (a
+contradiction). $\Box$
+
+    \textbf{7.} Show that ($A$ is connected and locally path-connected)
+$\Leftrightarrow$ ($A$ is path-connected).
+
+\textbf{Proof.} \emph{(HW\#4)} $\Box$
+
+    \textbf{8.} $(a)$ Prove that if $A$ is connected in $\mathbb{R}^n$ and
+$A\subset B \subset \operatorname{cl}(A)$, then $B$ is connected.
+
+$(b)$ \emph{(removed)} Deduce from $(a)$ that the components of a set
+$A$ are relatively closed. Give an example in which they are not
+relatively open.
+
+$(c)$ Show that if sets $B_i$ and $B$ are connected and
+$B_i\cap B\neq \varnothing$ for all $i$, then $(\bigcup_i B_i)\cup B$ is
+connected.
+
+$(d)$ \emph{(removed)} Deduce from $(c)$ that every point of a set lies
+in a unique component.
+
+$(e)$ Use $(c)$ to show $\mathbb{R}^n$ is connected assuming just that
+lines in $\mathbb{R}^n$ are connected.
+
+\textbf{Proof.} $(a)$ Let $U$, $V$ be two open subsets of $\mathbb{R}^n$
+such that $B \subset (U\cup V)$, $B \cap U \ne\varnothing$, and
+$B \cap V \ne \varnothing$. To prove that $B$ is connected, it is enough
+to prove that $B \cap U \cap V \ne \varnothing$. Indeed, by
+$B \cap U \ne\varnothing$, there exists $x\in B \cap U$. Because
+$x\in B \subset \operatorname{cl}(A)$ and $U$ is a neighborhood of $x$,
+we have $U \cap A \ne \varnothing$. Similarly,
+$B \cap U \ne\varnothing$. By $A \subset (U\cup V)$ and the
+connectedness of $A$, we must have $A\cap U \cap V \ne \varnothing$.
+Hence $B \cap U \cap V \ne \varnothing$.
+
+$(b)$ Each component in $A$ is connected. So its closure is connected.
+So its closure in $A$ is connected. Because it is contained in its
+closure in $A$ and it is a maximum connected subset of $A$, it must be
+its closure in $A$. This implies that it is relatively closed.
+
+For example, let $A= \{0\}\cup \{1/n\mid n\in \mathbb{N}\}$. Then
+$\{0\}$ is a connected component. But it is not relatively open because
+every neiborhood of $0$ must contain $1/n$ for some $n\in\mathbb{N}$.
+
+$(c)$ Suppose that $(d)$ is true. Fix $x \in B$ and let
+$y \in (\bigcup_i B_i)\cup B$. We will prove that $x$ is connected to
+$y$ (means they are in the same connected component of
+$(\bigcup_i B_i)\cup B$ for all $y$). If $y \in B$, this is clear from
+the assumption that $B$ is connected. If $y\notin B$, then $y \in B_i$
+for some $i$. Let $z \in B \cap B_i$. We have $y$ and $z$ belong to
+$B_i$, so they are in the same connected component of
+$(\bigcup_i B_i)\cup B$. Moreover, $z$ and $x$ belong to $B$, so they
+are in the same connected component of $(\bigcup_i B_i)\cup B$. Hence
+$x$, $y$, and $z$ are in the same connected component of
+$(\bigcup_i B_i)\cup B$.
+
+$(d)$ Suppose $x \in B$ and $x\in C$, where $B$ and $C$ are two
+connected component. We will prove that $B \cup C$ is connected, hence
+$B = C = B \cup C$ by the property ``maximal'' of a component. Indeed,
+suppose on the contrary that there exist two open sets $U$ and $V$ such
+that $B\cup C \subset U \cup V$, $U \cap (B\cup C) \ne \varnothing$,
+$V \cap (B\cup C) \ne \varnothing$, and
+$U\cap V\cap (B\cup C) = \varnothing$. By
+$x\in B\cup C \subset U \cup V$, $x\in U$ or $x\in V$. Without loss of
+generality, suppose that $x\in U$. Let $y\in V \cap (B\cup C)$. Then
+$y\in V \cap B$ or $y\in V \cap C$. Without loss of generality, suppose
+that $y \in V \cap B$. Now, we have $B \subset U \cup V$,
+$x\in U \cap B$ (hence $U\cap B \ne \varnothing$), $y\in V \cap B$
+(hence $V\cap B \ne \varnothing$), and $U\cap V \cap B=\varnothing$. So
+$B$ is not connected, a contradiction.
+
+$(e)$ Let $x = (x_1,x_2,\ldots,x_n)$. Because lines in $\mathbb{R}^n$
+are connected, we have $x$ and $(0,x_2,\ldots,x_n)$ are in the same
+connected component. Similarly, $(0,x_2,\ldots,x_n)$ and
+$(0,0,x_3,\ldots,x_n)$ are in the same connected component. Continue
+this, we get $x$ and $0$ are in the same connected component. This is
+true for all $x \in \mathbb{R}^n$. So $\mathbb{R}^n$ are connected.
+$\Box$
+
+    \textbf{9.} Let $A$ be a subset of metric space $X$ and $x\in A$. Define
+$C(x)$ is the biggest connected subset of $A$ that contains $x$. Prove
+that $C(x)$ is closed in $A$.
+
+\textbf{Proof.} Similar to Exercise 8.b. $\Box$
+
+    \textbf{10.} Let $X$ be a metric space and $x\in X$. Give an example
+that $C(x)\neq X$, but $C(x)$ is open.
+
+\textbf{Proof.} Let $X = (0,1)\cup (2,3)$ and $x = 1/2$. Then
+$C(x) = (0,1)$, $C(x) \ne X$, and $C(x)$ open. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

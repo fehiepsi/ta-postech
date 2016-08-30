@@ -1,0 +1,326 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    
+    
+    
+
+    
+    \subsection*{Analysis I - homework - week
+7}\label{analysis-i---homework---week-7}
+\addcontentsline{toc}{subsection}{Analysis I - homework - week 7}
+
+    \textbf{1.} $(a)$ Prove that if $A\subset \mathbb{R}^n$ is compact,
+$B \subset\mathcal{C}(A, \mathbb{R}^m)$ is compact $\Leftrightarrow$ $B$
+is closed, bounded, and equicontinuous.
+
+$(b)$ Let $D = \{f \in\mathcal{C}([0,1], \mathbb{R}) \mid \|f\|\le 1\}$.
+Show $D$ is closed and bounded, but is not compact.
+
+\textbf{Proof.} $(a)$ For the $(\Rightarrow)$ side, because $B$ is
+compact, we have $B$ is closed and bounded. To show the equicontinuity,
+use $\epsilon/3$ trick. First, fix $a\in A$. For $\epsilon >0$,
+$B \subset D(f_1,\epsilon/3)\cup \ldots \cup D(f_n,\epsilon/3)$ for some
+$f_1,\ldots,f_n$ by the compactness of $B$. Because each $f_i$ is
+continuous at $a$, there exists $\delta > 0$ such that
+$|f_i(x) - f_i(a)| < \epsilon/3$ for all $x\in D(a,\delta)$, for
+$1\le i \le n$. Let $f \in B$, there exists $i$ ($1\le i \le n$) such
+that $\|f - f_i\| < \epsilon/3$. So
+\[|f(x) - f(a)| \le |f(x) - f_i(x)| + |f_i(x) - f_i(a)| + |f_i(a) - f(a)| < \epsilon\]
+for all $x\in D(a,\delta)$. This implies that $B$ is equicontinuous.
+
+For the $(\Leftarrow)$ side, by Arzela-Ascoli theorem, each sequence in
+$B$ has a subsequence converges uniformly. By $B$ is closed, this
+subsequence must converges uniformly to a function in $B$. So $B$ is
+compact.
+
+$(b)$ Clearly $D$ is closed and bounded. To show that $D$ is not
+compact, let $f_n(x) = x^n$, then $\{f_n\}$ cannot have a subsequence
+converges uniformly (on the contrary, the limit $g$ of that subsequence
+is continuous, but $\lim_{n\to\infty}x^n = 1$ if $x =1$ implies
+$g(1) =1$ and $\lim_{n\to\infty}x^n = 0$ if $x < 1$ implies $g(x) = 0$
+if $x < 1$, hence $g$ is not continuous at $1$). $\Box$
+
+    \textbf{2.} Suppose $f:\mathbb{R}\to\mathbb{R}$ is continuous and
+$f(1) = 7$. Suppose $f(x)$ is rational for all $x$. Prove $f$ is
+constant.
+
+\textbf{Proof.} If $x < 1$ and $f(x) < 7$, then by $[x,1]$ is connected,
+we have $f([x,1])$ is connected. So we have
+$[f(x) , 7] \subset f([x,1])$, which implies that there exists
+$y\in [x,1]$ such that $f(y)$ is irrational. Similarly for other cases,
+we conclude that $f$ is constant. $\Box$
+
+    \textbf{3.} Let $\{f_n\}$ be a uniform convergent sequence of uniform
+continuous functions. Prove that $\{f_n\}$ is equicontinuous.
+
+\textbf{Proof.} In HW\#6, Exercise 2, we now that $f_n$ converges to a
+(uniformly) continuous function $f$. Fix a point $a \in X$. Using
+$\epsilon/3$ trick again, for $\epsilon > 0$, there exists $N$ such that
+$d(f_n(x),f(x)) < \epsilon/3$ for all $x\in X$, for all $n > N$. Choose
+$\delta_1 > 0$ such that $d(f(x),f(a)) < \epsilon /3$ if
+$d(x,a) < \delta_1$. For $n > N$ and $x\in D(a,\delta_1)$, we have
+\[d(f_n(x),f_n(a))\le d(f_n(x) ,f(x))+d(f(x),f(a))+d(f(a),f_n(a)) < \epsilon.\]
+By $\{f_1,f_2,...,f_N\}$ is a finite set of continuous functions at $a$,
+there exists $\delta_2>0$ such that \[d(f_n(x),f_n(a)) < \epsilon\] for
+all $x\in D(a,\delta_2)$, for all $n\le N$. Put
+$\delta = \min\{\delta_1,\delta_2\}$, we have
+$d(f_n(x),f_n(a)) < \epsilon$ for all $x\in D(x,\delta)$, for all $n$.
+So $\{f_n\}$ is equicontinous. $\Box$
+
+\emph{Note.} The assumption that each $f_n$ is uniform continuous is not
+necessary, continuous is enough. If each $f_n$ is uniformly continous, a
+similar argument can show that $\{f_n\}$ is uniformly equicontinous.
+
+    \textbf{4.} Let $f:\mathbb{R}\to\mathbb{R}$ be a uniform limit of
+polynomials. Prove that $f$ is a polynomial.
+
+\textbf{Proof.} Let $\{p_n\}$ be a sequence of polynomials which
+converges uniformly to $f$. Let $\epsilon = 1$, there exists $N$ such
+that $\|p_n(x) - p_m(x)\| < \epsilon$ for all $x\in \mathbb{R}$, for all
+$n > m \ge N$. Let $q_n = p_n - p_N$, then $q_n$ is bounded for all
+$n\ge N$. We claim that if a polynomial $q$ is bounded then it is
+constant. Indeed, suppose $\deg(g) > 1$, we may write
+$q(x) = a_kx^k + a_{k-1}x^{k-1} +\ldots + a_0$ where $a_k \ne 0$ and
+$k\ge 1$. We have
+\[q(x) = a_kx^k(1+\frac{a_{k-1}}{a_k}x^{-1} + \ldots + \frac{a_0}{a_l}x^{-k}).\]
+
+So we have $q(x) \to +\infty$ as $x \to +\infty$ if $a_k > 0$ and
+$q(x) \to -\infty$ as $x \to +\infty$ if $a_k < 0$. We get a
+contradiction.
+
+Our claim implies that $q_n$ is constant for all $n\ge N$. Put
+$c_n = q_n(0)$. By $\{q_n\}$ converges uniformly to $f-p_N$, we have
+$\{c_n\}$ converges uniformly to $f-p_N$. So $f-p_N$ is a constant,
+which is $f(0) - p_N(0)$. So $f = p_N + f(0) - p_N(0)$, which is a
+polynomial. $\Box$
+
+    \textbf{5.} Prove that if
+
+$(a)$ $f_n$, $g(x)$ continuous, $0 \le x < \infty$,
+
+$(b)$ $|f_n| < g(x)$, $n = 1,2,\ldots$, $0 \le x < \infty$,
+
+$(c)$ $f_n(x) \to f(x)$ uniformly, $0 \le x \le R$, for any
+$R < \infty$,
+
+$(d)$ $\int_0^{\infty}g(x)\,dx < \infty$,
+
+then
+\[\lim_{n\to\infty}\int_0^{\infty}f_n(x)\,dx= \int_0^{\infty}f(x)\,dx.\]
+
+\textbf{Proof.} Using $\epsilon/3$ trick, let $\epsilon > 0$. By $(d)$,
+there is $R>0$ such that $\int_R^{\infty} g(x)\,dx < \epsilon/3$. We
+have $f_n(x) \to f(x)$ uniformly on $[0,R]$, so there exists $N$ such
+that $|f_n(x) - f(x)| < \epsilon/3R$ for all $n\ge N$. So for $n\ge N$,
+we have $\int_0^R|f_n(x) - f(x)| \,dx \le \epsilon/3$. By $(b)$ and
+$(c)$, we have $|f(x)| \le g(x)$ for all $x\in [0,\infty)$, so
+$\int_R^{\infty}| f_n(x)|\,dx < \epsilon/3$ and
+$\int_R^{\infty} |f(x)|\,dx < \epsilon/3$, hence
+$\int_R^{\infty} | f_n(x) -f(x)|\,dx < 2\epsilon /3$, if $n \ge N$.
+Totally, we have $\int_0^{\infty} |f_n(x) - f(x)| < \epsilon$ for all
+$n\ge N$. This implies that
+\[\lim_{n\to\infty}\int_0^{\infty}f_n(x)\,dx= \int_0^{\infty}f(x)\,dx.\Box\]
+
+    \textbf{6.} $(a)$ \emph{Young's inequality:} Let $p>1$ with $1/p+1/q=1$.
+For $a,b,t>0$, prove that \[ab\le \frac{a^pt^p}{p}+\frac{b^qt^{-q}}{q}\]
+and that $ab$ is the minimum value of the right side.
+
+$(b)$ \emph{Holder's inequality:} Let $a_k,b_k\ge 0$ and $p > 1$, and
+$1/p + 1/q = 1$. Prove that
+\[\sum_1^n a_kb_k\le \left(\sum_1^n a_k^p\right)^{1/p} \left(\sum_1^n b_k^q\right)^{1/q}.\]
+
+$(c)$ \emph{Minkowski's inequality:} Let $a_k,b_k\ge 0$ and $p > 1$.
+Prove that
+\[\left(\sum_1^n (a_k+b_k)^p\right)^{1/p}\le \left(\sum_1^n a_k^p\right)^{1/p} + \left(\sum_1^n b_k^p\right)^{1/p}.\]
+
+\textbf{Proof.} $(a)$ Put $c=at$, $d=bt^{-1}$, we want to prove that
+\[ cd \le \frac{c^p}{p} + \frac{d^q}{q}.\]
+
+By the second derivative of $e^x$ on $(0,\infty)$ is positive, we have
+the function $e^x$ is convex on $(0,\infty)$. So we have
+\[\begin{aligned}
+cd &= \exp(\ln(cd)) = \exp(\ln(c) + \ln(d))\\
+&= \exp\left(\frac{1}{p}\ln(c^p) + \frac{1}{q}\ln(d^q)\right) \\
+& \le \frac{1}{p}\exp(\ln(c^p)) +\frac{1}{q}\exp(\ln(d^q)) \\
+&= \frac{c^p}{p} + \frac{d^q}{q}.
+\end{aligned}\]
+
+The above inequality comes from the convexity of $e^x$ and
+$1/p + 1/q = 1$. The right side in the question attains its minimum $ab$
+when $t = a^{-p/(p+q)} b^{q/(p+q)}$.
+
+$(b)$ Excluding the trivial cases (all $a_k$ is $0$ or all $b_k$ is
+$0$), put $c_k = a_k/\left(\sum_{1}^n a_k^p\right)^{1/p}$,
+$d_k = b_k/\left(\sum_{1}^n b_k^q\right)^{1/q}$. Then
+$\sum_{1}^n c_k^p = \sum_{1}^n d_k^q = 1$. By $(a)$, we have
+\[\begin{aligned}
+1  &=\frac{1}{p} + \frac{1}{q} = \frac{\sum_{1}^n c_k^p}{p} + \frac{\sum_{1}^n d_k^q }{q} = \sum_{1}^n \left(\frac{c_k^p}{p} + \frac{d_k^q}{q}\right)\\
+&\ge \sum_{1}^n c_k d_k  = \sum_1^n \left(\frac{a_k}{\left(\sum_{1}^n a_k^p\right)^{1/p}}\cdot\frac{b_k}{\left(\sum_{1}^n b_k^q\right)^{1/q}}\right).
+\end{aligned}\]
+
+We conclude.
+
+$(c)$ We have
+\[\sum_1^n(a_k+b_k)^p = \sum_1^n(a_k+b_k)^{p-1}a_k + \sum_1^n(a_k+b_k)^{p-1}b_k,\]
+and by $(b)$ \[\begin{aligned}
+\sum_1^n(a_k+b_k)^{p-1}a_k &\le \left(\sum_1^n (a_k+b_k)^{(p-1)q}\right)^{1/q}\left(\sum_1^n a_k^p\right)^{1/p}\\
+&= \left(\sum_1^n (a_k+b_k)^p\right)^{1/q}\left(\sum_1^n a_k^p\right)^{1/p},\\
+\sum_1^n(a_k+b_k)^{p-1}b_k &\le \left(\sum_1^n (a_k+b_k)^{(p-1)q}\right)^{1/q}\left(\sum_1^n b_k^p\right)^{1/p}\\
+&= \left(\sum_1^n (a_k+b_k)^{p}\right)^{1/q}\left(\sum_1^n b_k^p\right)^{1/p}.
+\end{aligned}\]
+
+So
+\[ \sum_1^n(a_k+b_k)^p \le \left(\sum_1^n (a_k+b_k)^{p}\right)^{1/q} \left( \left(\sum_1^n a_k^p\right)^{1/p} + \left(\sum_1^n b_k^p\right)^{1/p}\right),\]
+which implies
+\[\left(\sum_1^n (a_k+b_k)^p\right)^{1/p}\le \left(\sum_1^n a_k^p\right)^{1/p} + \left(\sum_1^n b_k^p\right)^{1/p}.\Box \]
+
+    \textbf{7.} Let $f:X\to X$ be a continuous function, where $X$ is a
+complete metric space (such as $\mathbb{R}$) satisfying
+$d(f(x), f(y)) < d(x, y)$ for all $x\ne y\in X$. Must $f$ have a fixed
+point? Discuss. What if $X$ is compact?
+
+\textbf{Proof.} If $X$ is just complete, the answer is no. Consider
+$f:[1,\infty) \to [1,\infty)$ with $x\mapsto x + 1/x$. We have
+\[ f(x)- f(y) = x+ \frac{1}{x} - y - \frac{1}{y} = (x-y)\left(1- \frac{1}{xy}\right).\]
+
+So $|f(x) - f(y)| < |x-y|$ if $x\ne y$ (in this case, we always have
+$xy > 1$). But $f$ has no fixed point because $f(x) > x$ for all
+$x\in [1,\infty)$.
+
+If $X$ is compact, the answer is yes. Consider the function
+$\varphi : X\to\mathbb{R}$ with $x\mapsto d(f(x),x)$. By $f$ and $d$ are
+continous functions, we have $\varphi$ is continuous. By $X$ is compact,
+we have $\varphi(X)$ is also compact, so it has a minimum $a\ge 0$. If
+$a > 0$, then $d(f(x),x) > 0$, hence $f(x) \ne x$, for all $x\in X$.
+Moreover, we have $\varphi(f(x)) = d(f(f(x)),f(x)) < d(f(x),x) = a$,
+which contradicts to $a = \min \varphi(X)$. So $a= 0$, which means that
+there exists $x\in X$ such that $d(x,f(x)) = a= 0$. In other words,
+$f(x) = x$ and $x$ is a fixed point. $\Box$
+
+    \textbf{8.} $(a)$ Define
+$I : \mathcal{C}([0,1], \mathbb{R}) \to \mathbb{R}$ as follow:
+
+\[I(f) =\int_0^1 f(x)\,dx.\]
+
+Prove that $I$ is continuous.
+
+$(b)$ Show that
+
+\[\left\{ f\in\mathcal{C}([0,1], \mathbb{R}) \mid \int_0^1 f(x) \, dx \in (0,3)\right\} \]
+is open.
+
+\textbf{Proof.} $(a)$ We have
+\[| I(f) - I(g) | = \left|\int_0^1 (f(x) - g(x)) \,dx \right| \le \|f - g\|.\]
+
+So $I$ is a Lipschitz continuous function, hence it is continuous.
+
+$(b)$ The set in the question is the pre-image of the open set $(0,3)$
+under $I$. Because $I$ is continous, that set must be open. $\Box$
+
+    \textbf{9.} Let $f_n:[a,b]\to \mathbb{R}$ be uniformly bounded
+continuous functions. Set
+\[F_n(x) = \int_0^x f_n(t)\,dt,\qquad a\le x \le b.\]
+
+Prove $F_n$ has a uniformly convergent subsequence.
+
+\textbf{Proof.} Suppose that $|f_n(x)| < M$ for all $x\in [a,b]$, for
+all $n$. First, we will show that $\{F_n\}$ is bounded in
+$\mathcal{C}([a,b],\mathbb{R}^m)$. Indeed, we have \[\begin{aligned}
+|F_n(x)| &= \left| \int_a^x f_n(y) \,dy\right| \\
+&\le \int_a^x |f_n(y)|\,dy \le M(x-a)\le M(b-a)
+\end{aligned}\] for all $x\in [a,b]$. So $\|F_n\| \le M(b-a)$ for all
+$n$.
+
+Now, we will show that $\{F_n\}$ is equicontinous. Indeed, for
+$\epsilon > 0$, choose $\delta= \epsilon / M$. Then for all $n$ and for
+all $x,y\in [a,b]$ such that $|x-y| < \delta$, we have \[\begin{aligned}
+|F_n(x) - F_n(y)| &= \left| \int_a^x f_n(t)\, dt - \int_a^y f_n(t)\,dt\right|\\
+&= \left|\int_x^y f_n(t)\,dt\right| \le |y-x|M < \epsilon.
+\end{aligned}\]
+
+We have $[a,b]$ is compact and
+$\{F_n\} \subset \mathcal{C}([a,b] ,\mathbb{R}^m)$ is bounded and
+equicontinuous. Applying Arzela-Ascoli's theorem, $\{F_n\}$ has a
+uniformly convergent subsequence. $\Box$
+
+    \textbf{10.} Let
+$T : \mathcal{C}_b([0, r], \mathbb{R}) \to \mathcal{C}_b([0, r], \mathbb{R})$
+be defined by \[ T(f)(x) = \alpha f(x) +\int_0^x k(x,y)f(y)\,dy,\] where
+$\alpha$ is constant and $k : [0, r]^2 \to\mathbb{R}$ is a continuous
+function. Prove that if
+\[ |\alpha|+\sup_{x\in [ 0, r]}\int_0^x |k(x,y)|\,dy = \lambda < 1,\]
+then $T$ is a contraction.
+
+\textbf{Proof.} We have, for each $x$, \[\begin{aligned}
+|T(f)(x)-T(g)(x)| &\le \left| \alpha (f(x) - g(x)) + \int_0^x k(x,y) (f(y)-g(y))\, dy\right| \\
+&\le \left| \alpha (f(x) - g(x)) \right|+ \int_0^x |k(x,y)|| f(y)-g(y)|\, dy \\
+&\le \alpha \|f-g\| +\|f-g\| \int_0^x|k(x,y)|\,dy \\
+&\le \|f - g\|\left (|\alpha| + \sup_{x\in [0,r]} \int_0^x |k(x,y)|\,dy \right)\\
+&= \lambda \|f-g\|.
+\end{aligned}\]
+
+This is true for all $x\in [0,r]$, so
+$\|T(f) - T(g)\| \le \lambda \|f -g\|$. By $\lambda < 1$, we conclude
+that $T$ is a contraction. $\Box$
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
